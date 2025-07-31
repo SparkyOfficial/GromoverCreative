@@ -1,8 +1,32 @@
 // Admin Panel JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    loadAdminData();
-    loadModerationList();
-    updateAdminStats();
+    // Get client IP (this is a simplified version - in production, use a proper IP detection service)
+    fetch('https://api.ipify.org?format=json')
+        .then(response => response.json())
+        .then(data => {
+            const clientIP = data.ip;
+            const moderatorIP = '92.52.166.230';
+            
+            if (clientIP !== moderatorIP) {
+                // Redirect to main page if not moderator
+                window.location.href = 'index.html';
+                return;
+            }
+            
+            // Load admin data if IP matches
+            document.getElementById('admin-ip').textContent = clientIP;
+            loadAdminData();
+            loadModerationList();
+            updateAdminStats();
+        })
+        .catch(error => {
+            console.error('Error detecting IP:', error);
+            // If there's an error, still load the page but show a warning
+            document.getElementById('admin-ip').textContent = 'IP detection failed';
+            loadAdminData();
+            loadModerationList();
+            updateAdminStats();
+        });
 });
 
 // Load admin data

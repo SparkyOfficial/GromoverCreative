@@ -47,8 +47,10 @@ body::before {
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
     z-index: 1000;
+    padding: 15px 0;
 }
 
 .nav-container {
@@ -111,11 +113,12 @@ body::before {
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 120px 0 80px;
+    padding: 180px 0 80px; /* Increased top padding to account for fixed header */
     text-align: center;
     color: white;
     position: relative;
     overflow: hidden;
+    margin-top: 70px; /* Add margin to account for fixed header */
 }
 
 .hero::before {
@@ -292,7 +295,7 @@ body::before {
 }
 
 .testimony-section p {
-    color: #555;
+    color: #ffffff;
     line-height: 1.7;
 }
 
