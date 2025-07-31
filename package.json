@@ -15,7 +15,7 @@
     "dossier"
   ],
   "author": "Sparky",
-  "license": "MIT",
+  "license": "Unlicense",
   "devDependencies": {
     "http-server": "^14.1.1"
   },

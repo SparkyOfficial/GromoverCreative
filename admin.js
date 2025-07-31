@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Load admin data
 function loadAdminData() {
     const dossierData = JSON.parse(localStorage.getItem('dossierData') || '[]');
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
     
     // Update stats
     document.getElementById('total-dossiers').textContent = dossierData.length;
@@ -97,7 +97,7 @@ function addBlacklistedIP() {
     const newIP = document.getElementById('new-ip').value.trim();
     
     if (newIP && isValidIP(newIP)) {
-        const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
+        const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
         
         if (!blacklistedIPs.includes(newIP)) {
             blacklistedIPs.push(newIP);
@@ -117,7 +117,7 @@ function addBlacklistedIP() {
 
 // Remove blacklisted IP
 function removeIP(ip) {
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
     const filteredIPs = blacklistedIPs.filter(ipAddr => ipAddr !== ip);
     
     localStorage.setItem('blacklistedIPs', JSON.stringify(filteredIPs));
@@ -128,7 +128,7 @@ function removeIP(ip) {
 
 // Load blacklisted IPs
 function loadBlacklistedIPs() {
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
     const ipList = document.getElementById('blacklist-ips');
     
     ipList.innerHTML = '';
@@ -153,7 +153,7 @@ function isValidIP(ip) {
 // Export all data
 function exportAllData() {
     const dossierData = JSON.parse(localStorage.getItem('dossierData') || '[]');
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
     
     const exportData = {
         dossiers: dossierData,
@@ -177,7 +177,7 @@ function exportAllData() {
 // Update admin stats
 function updateAdminStats() {
     const dossierData = JSON.parse(localStorage.getItem('dossierData') || '[]');
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
     
     document.getElementById('total-dossiers').textContent = dossierData.length;
     document.getElementById('pending-moderation').textContent = dossierData.filter(d => d.status === 'pending').length;
