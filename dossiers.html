@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Досье на токсиков - Правда о GromoverCreative</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span>Досье на токсиков</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#search">Поиск</a></li>
+                    <li><a href="#add-dossier">Добавить</a></li>
+                    <li><a href="#export">Экспорт</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Досье на токсиков</h1>
+                <p class="hero-subtitle">Подробная база данных свидетельств о токсичном поведении в GromoverCreative</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number" id="total-dossiers">0</span>
+                        <span class="stat-label">Всего досье</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="anonymous-dossiers">0</span>
+                        <span class="stat-label">Анонимных</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number" id="public-dossiers">0</span>
+                        <span class="stat-label">Публичных</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section id="search" class="section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-search"></i>
+                Поиск по досье
+            </h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Поиск по имени, содержанию или тегам...">
+                    <button id="search-btn" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Найти
+                    </button>
+                </div>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">Все</button>
+                    <button class="filter-btn" data-filter="anonymous">Анонимные</button>
+                    <button class="filter-btn" data-filter="public">Публичные</button>
+                    <button class="filter-btn" data-filter="recent">Недавние</button>
+                    <button class="filter-btn" data-filter="with-files">С файлами</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dossiers List -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="dossiers-header">
+                <h2 class="section-title">
+                    <i class="fas fa-folder-open"></i>
+                    Все досье
+                </h2>
+                <div class="dossiers-controls">
+                    <button id="add-new-dossier" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Добавить досье
+                    </button>
+                    <button id="export-all" class="btn btn-secondary">
+                        <i class="fas fa-download"></i> Экспорт
+                    </button>
+                </div>
+            </div>
+            <div id="dossiers-list" class="dossiers-grid">
+                <!-- Досье будут загружаться динамически -->
+            </div>
+            <div id="no-dossiers" class="no-dossiers" style="display: none;">
+                <i class="fas fa-folder-open"></i>
+                <h3>Пока нет досье</h3>
+                <p>Добавьте первое досье, чтобы начать коллекцию свидетельств</p>
+                <button class="btn btn-primary" onclick="showAddDossierModal()">
+                    <i class="fas fa-plus"></i> Добавить досье
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add Dossier Modal -->
+    <div id="add-dossier-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-plus"></i> Добавить новое досье</h3>
+                <button class="modal-close" onclick="closeAddDossierModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="add-dossier-form" class="dossier-form">
+                <div class="form-group">
+                    <label for="dossier-title">Название досье *</label>
+                    <input type="text" id="dossier-title" required placeholder="Имя токсичного пользователя">
+                </div>
+                <div class="form-group">
+                    <label for="dossier-content">Описание *</label>
+                    <textarea id="dossier-content" required placeholder="Подробное описание токсичного поведения..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="dossier-tags">Теги (через запятую)</label>
+                    <input type="text" id="dossier-tags" placeholder="буллинг, цензура, блокировки">
+                </div>
+                <div class="form-group">
+                    <label for="dossier-type">Тип досье</label>
+                    <select id="dossier-type">
+                        <option value="public">Публичное</option>
+                        <option value="anonymous">Анонимное</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="dossier-files">Прикрепить файлы</label>
+                    <input type="file" id="dossier-files" multiple accept="image/*,.txt,.pdf,.mp4">
+                    <div id="file-preview" class="file-preview"></div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAddDossierModal()">Отмена</button>
+                    <button type="submit" class="btn btn-primary">Сохранить досье</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dossier Details Modal -->
+    <div id="dossier-details-modal" class="modal" style="display: none;">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 id="modal-dossier-title"></h3>
+                <button class="modal-close" onclick="closeDossierDetailsModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="modal-dossier-content"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p><strong>Разработано и Курируется:</strong> Sparky</p>
+                    <p>База данных досье на токсичных пользователей GromoverCreative</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Главная</a>
+                    <a href="#search">Поиск</a>
+                    <a href="#add-dossier">Добавить</a>
+                    <a href="#export">Экспорт</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="dossiers.js"></script>
+</body>
+</html> 
