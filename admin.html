@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        // Защита админ-панели
+        document.addEventListener('DOMContentLoaded', function() {
+            const adminPassword = prompt('Введите пароль администратора:');
+            if (adminPassword !== 'Sparky2024') {
+                alert('Неверный пароль!');
+                window.location.href = 'index.html';
+                return;
+            }
+        });
+    </script>
     <style>
         .admin-container {
             max-width: 1200px;
@@ -175,9 +186,6 @@
         <div class="admin-header">
             <h1><i class="fas fa-shield-alt"></i> Админ-панель Sparky</h1>
             <p>Управление сайтом "Правда о GromoverCreative"</p>
-            <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
-                <i class="fas fa-network-wired"></i> Ваш IP: <span id="admin-ip">Загрузка...</span>
-            </div>
         </div>
 
         <div class="admin-stats">

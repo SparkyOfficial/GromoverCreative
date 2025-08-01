@@ -1,32 +1,8 @@
 // Admin Panel JavaScript
 document.addEventListener('DOMContentLoaded', function() {
-    // Get client IP (this is a simplified version - in production, use a proper IP detection service)
-    fetch('https://api.ipify.org?format=json')
-        .then(response => response.json())
-        .then(data => {
-            const clientIP = data.ip;
-            const moderatorIP = '92.52.166.230';
-            
-            if (clientIP !== moderatorIP) {
-                // Redirect to main page if not moderator
-                window.location.href = 'index.html';
-                return;
-            }
-            
-            // Load admin data if IP matches
-            document.getElementById('admin-ip').textContent = clientIP;
-            loadAdminData();
-            loadModerationList();
-            updateAdminStats();
-        })
-        .catch(error => {
-            console.error('Error detecting IP:', error);
-            // If there's an error, still load the page but show a warning
-            document.getElementById('admin-ip').textContent = 'IP detection failed';
-            loadAdminData();
-            loadModerationList();
-            updateAdminStats();
-        });
+    loadAdminData();
+    loadModerationList();
+    updateAdminStats();
 });
 
 // Load admin data
@@ -141,7 +117,7 @@ function addBlacklistedIP() {
 
 // Remove blacklisted IP
 function removeIP(ip) {
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
     const filteredIPs = blacklistedIPs.filter(ipAddr => ipAddr !== ip);
     
     localStorage.setItem('blacklistedIPs', JSON.stringify(filteredIPs));
@@ -152,7 +128,7 @@ function removeIP(ip) {
 
 // Load blacklisted IPs
 function loadBlacklistedIPs() {
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
     const ipList = document.getElementById('blacklist-ips');
     
     ipList.innerHTML = '';
@@ -177,7 +153,7 @@ function isValidIP(ip) {
 // Export all data
 function exportAllData() {
     const dossierData = JSON.parse(localStorage.getItem('dossierData') || '[]');
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
     
     const exportData = {
         dossiers: dossierData,
@@ -201,7 +177,7 @@ function exportAllData() {
 // Update admin stats
 function updateAdminStats() {
     const dossierData = JSON.parse(localStorage.getItem('dossierData') || '[]');
-    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '[]');
+    const blacklistedIPs = JSON.parse(localStorage.getItem('blacklistedIPs') || '["92.52.166.230"]');
     
     document.getElementById('total-dossiers').textContent = dossierData.length;
     document.getElementById('pending-moderation').textContent = dossierData.filter(d => d.status === 'pending').length;

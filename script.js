@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Enhanced form handling for dossier uploads
     // IP-based moderation system
-    const BLACKLISTED_IPS = [];
+    const BLACKLISTED_IPS = []; // Убрали IP модератора из черного списка
     const MODERATION_ENABLED = true;
 
     // Function to get client IP (simulated for static site)
