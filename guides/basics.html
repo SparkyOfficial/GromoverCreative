@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основы Creative+ - GromoverCreative</title>
+    <link rel="stylesheet" href="../css/gitbook.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="gitbook-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../Gromovercreative_upscaled.webp" alt="GromoverCreative" class="sidebar-logo">
+                <h1>GromoverCreative</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a href="basics.html" class="nav-link">Введение в Creative+</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blocks.html" class="nav-link">Блоки и их типы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="advanced.html" class="nav-link">Продвинутые техники</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="animations.html" class="nav-link">Анимации и Эффекты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="games.html" class="nav-link">Создание Игр</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="optimization.html" class="nav-link">Оптимизация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tutorials.html" class="nav-link">Практические Уроки</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <header class="page-header">
+                    <h1>Введение в Creative+</h1>
+                    <p class="page-description">Основы кодинга-на-блоках для начинающих разработчиков</p>
+                </header>
+
+                <div class="content">
+                    <div class="alert alert-info">
+                        <strong><i class="fas fa-lightbulb"></i> Совет:</strong> Этот гайд предназначен для новичков. Если вы уже знакомы с основами, переходите к <a href="advanced.html">продвинутым техникам</a>.
+                    </div>
+
+                    <h2>Что такое Creative+?</h2>
+                    <p>Creative+ — это революционная система визуального программирования, которая позволяет создавать сложные игры и приложения прямо в Minecraft, используя блоки вместо традиционного кода. Представьте себе, что каждый блок — это команда или функция, а их соединение создает логику вашего приложения.</p>
+
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>Пример простой логики</span>
+                        </div>
+                        <div class="code-content">
+                            <div class="block-line">
+                                <span class="block block-event"><i class="fas fa-gamepad"></i> Игрок нажимает кнопку</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action"><i class="fas fa-bolt"></i> Активировать механизм</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-condition"><i class="fas fa-question"></i> Проверить условие</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-output"><i class="fas fa-paper-plane"></i> Отправить сообщение</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Основные концепции</h2>
+                    
+                    <h3>1. Блоки как строительные элементы</h3>
+                    <p>В Creative+ каждый блок представляет собой определенную операцию или функцию. Блоки можно разделить на несколько категорий:</p>
+                    
+                    <ul>
+                        <li><strong>События (Events)</strong> — блоки, которые реагируют на действия игрока или изменения в мире</li>
+                        <li><strong>Действия (Actions)</strong> — блоки, которые выполняют конкретные операции</li>
+                        <li><strong>Условия (Conditions)</strong> — блоки для проверки различных условий</li>
+                        <li><strong>Переменные (Variables)</strong> — блоки для хранения и обработки данных</li>
+                        <li><strong>Функции (Functions)</strong> — блоки для создания переиспользуемого кода</li>
+                    </ul>
+
+                    <h3>2. Поток выполнения</h3>
+                    <p>Логика в Creative+ выполняется последовательно, следуя соединениям между блоками. Каждый блок может иметь входы и выходы, которые определяют порядок выполнения:</p>
+
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Событие</h4>
+                                <p>Игрок входит в область</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Проверка</h4>
+                                <p>Есть ли у игрока нужный предмет?</p>
+                            </div>
+                        </div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Действие</h4>
+                                <p>Открыть дверь или показать сообщение</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>3. Переменные и данные</h3>
+                    <p>Creative+ поддерживает различные типы данных, которые можно хранить в переменных:</p>
+
+                    <div class="data-types">
+                        <div class="data-type">
+                            <span class="type-icon"><i class="fas fa-hashtag"></i></span>
+                            <span class="type-name">Числа</span>
+                            <span class="type-example">42, 3.14, -10</span>
+                        </div>
+                        <div class="data-type">
+                            <span class="type-icon"><i class="fas fa-font"></i></span>
+                            <span class="type-name">Текст</span>
+                            <span class="type-example">"Привет, мир!"</span>
+                        </div>
+                        <div class="data-type">
+                            <span class="type-icon"><i class="fas fa-check"></i></span>
+                            <span class="type-name">Логические</span>
+                            <span class="type-example">true/false</span>
+                        </div>
+                        <div class="data-type">
+                            <span class="type-icon"><i class="fas fa-list"></i></span>
+                            <span class="type-name">Списки</span>
+                            <span class="type-example">[1, 2, 3, 4]</span>
+                        </div>
+                    </div>
+
+                    <h2>Ваш первый проект</h2>
+                    <p>Давайте создадим простую систему приветствия игроков. Это поможет понять основные принципы работы с Creative+.</p>
+
+                    <div class="tutorial-steps">
+                        <div class="tutorial-step">
+                            <div class="step-header">
+                                <span class="step-number">Шаг 1</span>
+                                <h4>Создание события</h4>
+                            </div>
+                            <p>Найдите блок "Игрок входит в область" в палитре событий. Разместите его в начале вашей логики.</p>
+                            <div class="block-example">
+                                <span class="block block-event"><i class="fas fa-user"></i> Игрок входит в область</span>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <div class="step-header">
+                                <span class="step-number">Шаг 2</span>
+                                <h4>Добавление действия</h4>
+                            </div>
+                            <p>Подключите к событию блок "Отправить сообщение". В поле сообщения введите приветствие.</p>
+                            <div class="block-example">
+                                <span class="block block-event"><i class="fas fa-user"></i> Игрок входит в область</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action"><i class="fas fa-comment"></i> Отправить сообщение: "Добро пожаловать!"</span>
+                            </div>
+                        </div>
+
+                        <div class="tutorial-step">
+                            <div class="step-header">
+                                <span class="step-number">Шаг 3</span>
+                                <h4>Тестирование</h4>
+                            </div>
+                            <p>Сохраните проект и протестируйте его, войдя в обозначенную область. Вы должны увидеть приветственное сообщение.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <strong><i class="fas fa-trophy"></i> Поздравляем!</strong> Вы создали свой первый проект в Creative+! Теперь вы готовы изучать более сложные концепции.
+                    </div>
+
+                    <h2>Следующие шаги</h2>
+                    <p>Теперь, когда вы понимаете основы, рекомендуем изучить:</p>
+                    
+                    <div class="next-steps">
+                        <a href="blocks.html" class="next-step-card">
+                            <div class="card-icon"><i class="fas fa-cubes"></i></div>
+                            <h3>Блоки и их типы</h3>
+                            <p>Подробное описание всех доступных блоков и их функций</p>
+                        </a>
+                        <a href="variables.html" class="next-step-card">
+                            <div class="card-icon"><i class="fas fa-database"></i></div>
+                            <h3>Переменные и данные</h3>
+                            <p>Работа с данными и создание динамических систем</p>
+                        </a>
+                        <a href="functions.html" class="next-step-card">
+                            <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                            <h3>Функции и события</h3>
+                            <p>Создание переиспользуемого кода и обработка событий</p>
+                        </a>
+                    </div>
+
+                    <div class="page-footer">
+                        <div class="footer-nav">
+                            <a href="../index.html" class="prev-page"><i class="fas fa-arrow-left"></i> На главную</a>
+                            <a href="blocks.html" class="next-page">Блоки и их типы <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="footer-info">
+                            <p>Последнее обновление: 15 января 2025</p>
+                            <p>Версия: 1.0.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/gitbook.js"></script>
+</body>
+</html> 

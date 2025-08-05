@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блоки и их типы - GromoverCreative</title>
+    <link rel="stylesheet" href="../css/gitbook.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+</head>
+<body>
+    <div class="gitbook-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../Gromovercreative_upscaled.webp" alt="GromoverCreative" class="sidebar-logo">
+                <h1>GromoverCreative</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="basics.html" class="nav-link">Введение в Creative+</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="blocks.html" class="nav-link">Блоки и их типы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="advanced.html" class="nav-link">Продвинутые техники</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="animations.html" class="nav-link">Анимации и Эффекты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="games.html" class="nav-link">Создание Игр</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="optimization.html" class="nav-link">Оптимизация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tutorials.html" class="nav-link">Практические Уроки</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <header class="page-header">
+                    <h1>Блоки и их типы</h1>
+                    <p class="page-description">Полное руководство по всем типам блоков в Creative+ и их использованию</p>
+                </header>
+
+                <div class="content">
+                    <div class="alert alert-info">
+                        <strong>📚 Справочник:</strong> Этот раздел содержит подробное описание всех доступных блоков в Creative+. Используйте поиск для быстрого нахождения нужного блока.
+                    </div>
+
+                    <h2>Категории блоков</h2>
+                    <p>Creative+ предлагает богатую библиотеку блоков, организованных по функциональности. Каждый блок имеет свой цвет и иконку для легкой идентификации.</p>
+
+                    <div class="block-categories">
+                        <div class="category-card">
+                            <div class="category-icon">🎮</div>
+                            <h3>События (Events)</h3>
+                            <p>Блоки, которые реагируют на действия игрока или изменения в мире</p>
+                            <span class="category-color" style="background: var(--minecraft-violet);"></span>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">⚡</div>
+                            <h3>Действия (Actions)</h3>
+                            <p>Блоки, которые выполняют конкретные операции и изменения</p>
+                            <span class="category-color" style="background: var(--accent-primary);"></span>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">❓</div>
+                            <h3>Условия (Conditions)</h3>
+                            <p>Блоки для проверки различных условий и принятия решений</p>
+                            <span class="category-color" style="background: var(--accent-secondary);"></span>
+                        </div>
+                        <div class="category-card">
+                            <div class="category-icon">📊</div>
+                            <h3>Переменные (Variables)</h3>
+                            <p>Блоки для хранения и обработки данных</p>
+                            <span class="category-color" style="background: var(--accent-tertiary);"></span>
+                        </div>
+                    </div>
+
+                    <h2>Блоки событий</h2>
+                    <p>События — это основа любой логики в Creative+. Они запускают выполнение остальных блоков при определенных условиях.</p>
+
+                    <div class="block-reference">
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">👤</span>
+                                <h4>Игрок входит в область</h4>
+                                <span class="block-type">Event</span>
+                            </div>
+                            <p>Срабатывает, когда игрок входит в определенную область мира</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Область (координаты)</li>
+                                    <li>Условия входа</li>
+                                </ul>
+                            </div>
+                            <div class="block-example">
+                                <span class="block block-event">👤 Игрок входит в область</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action">💬 Отправить сообщение</span>
+                            </div>
+                        </div>
+
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">🎯</span>
+                                <h4>Игрок нажимает кнопку</h4>
+                                <span class="block-type">Event</span>
+                            </div>
+                            <p>Активируется при нажатии игроком на кнопку или рычаг</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Тип кнопки</li>
+                                    <li>Права доступа</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">⚔️</span>
+                                <h4>Игрок получает урон</h4>
+                                <span class="block-type">Event</span>
+                            </div>
+                            <p>Срабатывает при получении игроком урона</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Источник урона</li>
+                                    <li>Минимальный урон</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Блоки действий</h2>
+                    <p>Действия выполняют конкретные операции в мире или с игроками.</p>
+
+                    <div class="block-reference">
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">💬</span>
+                                <h4>Отправить сообщение</h4>
+                                <span class="block-type">Action</span>
+                            </div>
+                            <p>Отправляет сообщение игроку или группе игроков</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Текст сообщения</li>
+                                    <li>Получатель</li>
+                                    <li>Тип сообщения</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">🎁</span>
+                                <h4>Выдать предмет</h4>
+                                <span class="block-type">Action</span>
+                            </div>
+                            <p>Выдает игроку определенный предмет</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Тип предмета</li>
+                                    <li>Количество</li>
+                                    <li>Зачарования</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">🌍</span>
+                                <h4>Изменить блок</h4>
+                                <span class="block-type">Action</span>
+                            </div>
+                            <p>Изменяет блок в указанных координатах</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Координаты</li>
+                                    <li>Новый тип блока</li>
+                                    <li>Данные блока</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Блоки условий</h2>
+                    <p>Условия позволяют создавать ветвления в логике и принимать решения на основе различных факторов.</p>
+
+                    <div class="block-reference">
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">🔍</span>
+                                <h4>Проверить предмет</h4>
+                                <span class="block-type">Condition</span>
+                            </div>
+                            <p>Проверяет, есть ли у игрока определенный предмет</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Тип предмета</li>
+                                    <li>Минимальное количество</li>
+                                    <li>Слот инвентаря</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">💰</span>
+                                <h4>Проверить баланс</h4>
+                                <span class="block-type">Condition</span>
+                            </div>
+                            <p>Проверяет баланс игрока в экономике сервера</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Минимальная сумма</li>
+                                    <li>Тип валюты</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">⏰</span>
+                                <h4>Проверить время</h4>
+                                <span class="block-type">Condition</span>
+                            </div>
+                            <p>Проверяет текущее время игры или реальное время</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Временной диапазон</li>
+                                    <li>Тип времени</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Блоки переменных</h2>
+                    <p>Переменные позволяют хранить и обрабатывать данные в ваших проектах.</p>
+
+                    <div class="block-reference">
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">📝</span>
+                                <h4>Установить переменную</h4>
+                                <span class="block-type">Variable</span>
+                            </div>
+                            <p>Создает или изменяет значение переменной</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Имя переменной</li>
+                                    <li>Значение</li>
+                                    <li>Тип данных</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">🔢</span>
+                                <h4>Математические операции</h4>
+                                <span class="block-type">Variable</span>
+                            </div>
+                            <p>Выполняет математические операции с числами</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Операция (+, -, *, /)</li>
+                                    <li>Первое число</li>
+                                    <li>Второе число</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="block-item">
+                            <div class="block-header">
+                                <span class="block-icon">📦</span>
+                                <h4>Работа со списками</h4>
+                                <span class="block-type">Variable</span>
+                            </div>
+                            <p>Добавляет, удаляет или изменяет элементы в списке</p>
+                            <div class="block-params">
+                                <strong>Параметры:</strong>
+                                <ul>
+                                    <li>Операция</li>
+                                    <li>Список</li>
+                                    <li>Элемент</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Продвинутые блоки</h2>
+                    <p>Для опытных разработчиков Creative+ предлагает специальные блоки для создания сложной логики.</p>
+
+                    <div class="advanced-blocks">
+                        <div class="advanced-block">
+                            <h3>🔄 Циклы</h3>
+                            <p>Блоки для повторения действий определенное количество раз или до выполнения условия</p>
+                            <div class="block-example">
+                                <span class="block block-event">🔄 Повторить 10 раз</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action">🌍 Создать блок</span>
+                            </div>
+                        </div>
+
+                        <div class="advanced-block">
+                            <h3>🎭 Функции</h3>
+                            <p>Создание переиспользуемых блоков кода для организации проекта</p>
+                            <div class="block-example">
+                                <span class="block block-event">🎭 Вызвать функцию</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action">⚡ Выполнить логику</span>
+                            </div>
+                        </div>
+
+                        <div class="advanced-block">
+                            <h3>🌐 API интеграции</h3>
+                            <p>Блоки для взаимодействия с внешними сервисами и API</p>
+                            <div class="block-example">
+                                <span class="block block-event">🌐 HTTP запрос</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action">📤 Отправить данные</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <strong>💡 Совет:</strong> Комбинируйте различные типы блоков для создания сложных и интересных проектов. Экспериментируйте с разными комбинациями!
+                    </div>
+
+                    <div class="page-footer">
+                        <div class="footer-nav">
+                            <a href="basics.html" class="prev-page">← Введение в Creative+</a>
+                            <a href="variables.html" class="next-page">Переменные и данные →</a>
+                        </div>
+                        <div class="footer-info">
+                            <p>Последнее обновление: 15 января 2025</p>
+                            <p>Версия: 1.0.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/gitbook.js"></script>
+</body>
+</html> 

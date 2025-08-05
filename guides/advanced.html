@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Продвинутые техники - GromoverCreative</title>
+    <link rel="stylesheet" href="../css/gitbook.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+</head>
+<body>
+    <div class="gitbook-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <img src="../Gromovercreative_upscaled.webp" alt="GromoverCreative" class="sidebar-logo">
+                <h1>GromoverCreative</h1>
+            </div>
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="basics.html" class="nav-link">Введение в Creative+</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="blocks.html" class="nav-link">Блоки и их типы</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="advanced.html" class="nav-link">Продвинутые техники</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="animations.html" class="nav-link">Анимации и Эффекты</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="games.html" class="nav-link">Создание Игр</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="optimization.html" class="nav-link">Оптимизация</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tutorials.html" class="nav-link">Практические Уроки</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-wrapper">
+                <header class="page-header">
+                    <h1>Продвинутые техники Creative+</h1>
+                    <p class="page-description">Мастер-класс по созданию сложных систем и продвинутых игровых механик</p>
+                </header>
+
+                <div class="content">
+                    <div class="alert alert-info">
+                        <strong>🚀 Продвинутый уровень:</strong> Этот раздел предназначен для опытных разработчиков. Убедитесь, что вы освоили основы перед изучением этих техник.
+                    </div>
+
+                    <h2>Системы состояний</h2>
+                    <p>Создание сложных систем состояний — это основа для разработки продвинутых игр. Рассмотрим, как создавать системы, которые могут находиться в различных состояниях и переключаться между ними.</p>
+
+                    <div class="code-block">
+                        <div class="code-header">
+                            <span>Система состояний игры</span>
+                        </div>
+                        <div class="code-content">
+                            <div class="block-line">
+                                <span class="block block-event">🎮 Игра запущена</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-condition">❓ Проверить состояние</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action">📊 Установить состояние: "MENU"</span>
+                            </div>
+                            <div class="block-line">
+                                <span class="block block-event">👤 Игрок нажимает "Играть"</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action">📊 Изменить состояние на: "PLAYING"</span>
+                                <span class="arrow">→</span>
+                                <span class="block block-action">🎯 Инициализировать игру</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Реализация системы состояний</h3>
+                    <p>Для создания эффективной системы состояний используйте следующие принципы:</p>
+
+                    <div class="advanced-technique">
+                        <h4>1. Централизованное управление состоянием</h4>
+                        <p>Создайте единую переменную для хранения текущего состояния игры:</p>
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Переменная состояния</span>
+                            </div>
+                            <div class="code-content">
+                                <span class="block block-variable">📝 Установить переменную: "gameState" = "MENU"</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="advanced-technique">
+                        <h4>2. Обработчики переходов</h4>
+                        <p>Создайте блоки для обработки переходов между состояниями:</p>
+                        <div class="code-example">
+                            <div class="code-header">
+                                <span>Переход состояний</span>
+                            </div>
+                            <div class="code-content">
+                                <div class="block-line">
+                                    <span class="block block-condition">❓ Если gameState = "MENU"</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">📊 Установить gameState = "PLAYING"</span>
+                                </div>
+                                <div class="block-line">
+                                    <span class="block block-condition">❓ Если gameState = "PLAYING"</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">📊 Установить gameState = "PAUSED"</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Системы событий</h2>
+                    <p>Создание собственных систем событий позволяет создавать модульные и расширяемые проекты.</p>
+
+                    <div class="event-system">
+                        <h3>Архитектура событий</h3>
+                        <p>Система событий состоит из трех основных компонентов:</p>
+                        
+                        <div class="event-components">
+                            <div class="event-component">
+                                <h4>🎯 Издатели (Publishers)</h4>
+                                <p>Блоки, которые генерируют события при определенных условиях</p>
+                                <div class="block-example">
+                                    <span class="block block-event">🎯 Опубликовать событие: "player_death"</span>
+                                </div>
+                            </div>
+                            
+                            <div class="event-component">
+                                <h4>📡 Подписчики (Subscribers)</h4>
+                                <p>Блоки, которые реагируют на определенные события</p>
+                                <div class="block-example">
+                                    <span class="block block-event">📡 Подписаться на: "player_death"</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">💀 Показать экран смерти</span>
+                                </div>
+                            </div>
+                            
+                            <div class="event-component">
+                                <h4>🔄 Диспетчер (Event Bus)</h4>
+                                <p>Центральная система, которая управляет передачей событий</p>
+                                <div class="block-example">
+                                    <span class="block block-action">🔄 Отправить событие в Event Bus</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Продвинутые алгоритмы</h2>
+                    <p>Изучите сложные алгоритмы, которые можно реализовать в Creative+.</p>
+
+                    <div class="algorithm-section">
+                        <h3>Алгоритм поиска пути (Pathfinding)</h3>
+                        <p>Реализация алгоритма A* для поиска кратчайшего пути в лабиринте:</p>
+
+                        <div class="algorithm-steps">
+                            <div class="algorithm-step">
+                                <h4>Шаг 1: Инициализация</h4>
+                                <p>Создайте сетку и определите начальную и конечную точки</p>
+                                <div class="code-example">
+                                    <div class="code-content">
+                                        <span class="block block-variable">📝 Создать список: "openList"</span>
+                                        <span class="block block-variable">📝 Создать список: "closedList"</span>
+                                        <span class="block block-variable">📝 Добавить начальную точку в openList</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="algorithm-step">
+                                <h4>Шаг 2: Основной цикл</h4>
+                                <p>Повторяйте до тех пор, пока не найдете путь или не исчерпаете все варианты</p>
+                                <div class="code-example">
+                                    <div class="code-content">
+                                        <span class="block block-condition">❓ Пока openList не пуст</span>
+                                        <span class="arrow">→</span>
+                                        <span class="block block-action">🔍 Найти узел с наименьшей стоимостью</span>
+                                        <span class="arrow">→</span>
+                                        <span class="block block-action">📊 Переместить узел в closedList</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="algorithm-step">
+                                <h4>Шаг 3: Проверка соседей</h4>
+                                <p>Для каждого соседнего узла вычислите стоимость и добавьте в openList</p>
+                                <div class="code-example">
+                                    <div class="code-content">
+                                        <span class="block block-action">🔄 Для каждого соседа</span>
+                                        <span class="arrow">→</span>
+                                        <span class="block block-action">🔢 Вычислить стоимость: g + h</span>
+                                        <span class="arrow">→</span>
+                                        <span class="block block-action">📝 Добавить в openList если лучше</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Оптимизация производительности</h2>
+                    <p>Изучите техники оптимизации для создания быстрых и эффективных проектов.</p>
+
+                    <div class="optimization-tips">
+                        <div class="optimization-tip">
+                            <h3>🎯 Кэширование результатов</h3>
+                            <p>Сохраняйте результаты сложных вычислений для повторного использования:</p>
+                            <div class="code-example">
+                                <div class="code-content">
+                                    <span class="block block-condition">❓ Если результат не в кэше</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">⚡ Выполнить вычисление</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">💾 Сохранить в кэш</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="optimization-tip">
+                            <h3>🔄 Ленивые вычисления</h3>
+                            <p>Выполняйте вычисления только когда они действительно нужны:</p>
+                            <div class="code-example">
+                                <div class="code-content">
+                                    <span class="block block-condition">❓ Если игрок в зоне видимости</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">🎯 Обновить AI противника</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="optimization-tip">
+                            <h3>📦 Батчинг операций</h3>
+                            <p>Группируйте похожие операции для повышения эффективности:</p>
+                            <div class="code-example">
+                                <div class="code-content">
+                                    <span class="block block-action">📦 Начать батч операций</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">🌍 Изменить 100 блоков</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">✅ Завершить батч</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2>Интеграция с внешними API</h2>
+                    <p>Научитесь интегрировать ваши проекты с внешними сервисами и API.</p>
+
+                    <div class="api-integration">
+                        <h3>HTTP запросы</h3>
+                        <p>Используйте блоки для отправки HTTP запросов к внешним сервисам:</p>
+
+                        <div class="api-example">
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span>Получение данных с сервера</span>
+                                </div>
+                                <div class="code-content">
+                                    <span class="block block-event">🌐 HTTP GET запрос к: "api.example.com/data"</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">📥 Получить ответ</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">📊 Парсить JSON</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">💾 Сохранить в переменную</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3>WebSocket соединения</h3>
+                        <p>Создавайте реальное время взаимодействие с серверами:</p>
+
+                        <div class="websocket-example">
+                            <div class="code-example">
+                                <div class="code-content">
+                                    <span class="block block-action">🔌 Подключиться к WebSocket</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-event">📨 Получить сообщение</span>
+                                    <span class="arrow">→</span>
+                                    <span class="block block-action">📤 Отправить ответ</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-success">
+                        <strong>🎉 Поздравляем!</strong> Вы изучили продвинутые техники Creative+! Теперь вы готовы создавать сложные и инновационные проекты.
+                    </div>
+
+                    <h2>Следующие шаги</h2>
+                    <p>Продолжайте развивать свои навыки:</p>
+                    
+                    <div class="next-steps">
+                        <a href="animations.html" class="next-step-card">
+                            <div class="card-icon">🎬</div>
+                            <h3>Анимации и эффекты</h3>
+                            <p>Создание потрясающих визуальных эффектов и анимаций</p>
+                        </a>
+                        <a href="optimization.html" class="next-step-card">
+                            <div class="card-icon">⚡</div>
+                            <h3>Оптимизация кода</h3>
+                            <p>Техники для создания быстрых и эффективных проектов</p>
+                        </a>
+                        <a href="../index.html" class="next-step-card">
+                            <div class="card-icon">🏠</div>
+                            <h3>На главную</h3>
+                            <p>Вернуться к обзору всех возможностей GromoverCreative</p>
+                        </a>
+                    </div>
+
+                    <div class="page-footer">
+                        <div class="footer-nav">
+                            <a href="functions.html" class="prev-page">← Функции и события</a>
+                            <a href="animations.html" class="next-page">Анимации и эффекты →</a>
+                        </div>
+                        <div class="footer-info">
+                            <p>Последнее обновление: 15 января 2025</p>
+                            <p>Версия: 1.0.0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/gitbook.js"></script>
+</body>
+</html> 

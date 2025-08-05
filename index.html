@@ -3,574 +3,496 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Правда о GromoverCreative - Разоблачение токсичного сообщества</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>GromoverCreative - Creative+ Сервер</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="logo">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <span>Правда о GromoverCreative</span>
-                </div>
-                <ul class="nav-menu">
-                    <li><a href="#experience">Опыт Спарки</a></li>
-                    <li><a href="#analysis">Анализ проблем</a></li>
-                    <li><a href="#alternatives">Альтернативы</a></li>
-                    <li><a href="#archive">Архив</a></li>
-                </ul>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Gromovercreative_upscaled.webp" alt="GromoverCreative" class="logo-img">
+                <span class="logo-text">GromoverCreative</span>
             </div>
-        </nav>
-    </header>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">О сервере</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">Возможности</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#screenshots" class="nav-link">Скриншоты</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#guides" class="nav-link">Гайды</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#staff" class="nav-link">Команда</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#comparison" class="nav-link">Сравнение</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#connect" class="nav-link">Подключиться</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1 class="hero-title">Правда о GromoverCreative</h1>
-                <p class="hero-subtitle">Разоблачение токсичного сообщества и примитивной разработки</p>
+                <h1 class="hero-title">
+                    <span class="gradient-text">GromoverCreative</span>
+                </h1>
+                <p class="hero-subtitle">Первый сервер с Кодингом-на-Блоках, использующий обязательный серверный ресурспак</p>
                 <div class="hero-stats">
                     <div class="stat">
-                        <span class="stat-number">∞</span>
-                        <span class="stat-label">Лет разработки</span>
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">место по продвинутости</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-number">0</span>
-                        <span class="stat-label">Готовых функций</span>
+                        <span class="stat-number">2025</span>
+                        <span class="stat-label">год основания</span>
                     </div>
-                    <div class="stat">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Токсичность</span>
+                </div>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="copyIP()">
+                        <i class="fas fa-gamepad btn-icon"></i>
+                        <span class="btn-text">IP: gromover.pw</span>
+                    </button>
+                    <a href="https://discord.gg/NYWQt3tr2h" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-discord btn-icon"></i>
+                        <span class="btn-text">Discord</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="minecraft-block">
+                    <div class="block-face front"></div>
+                    <div class="block-face back"></div>
+                    <div class="block-face right"></div>
+                    <div class="block-face left"></div>
+                    <div class="block-face top"></div>
+                    <div class="block-face bottom"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-background">
+            <div class="particles"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">О сервере</h2>
+            <div class="about-content">
+                <div class="about-description">
+                    <p>GromoverCreative — это революционный Creative+ сервер, открытый в 2025 году разработчиком GromoverGets. Мы являемся первым сервером с Кодингом-на-Блоках, использующим обязательный серверный ресурспак для расширенных возможностей.</p>
+                    <p>Наш сервер находится на 6 месте по продвинутости среди Creative+ серверов и продолжает развиваться, предлагая уникальные возможности для создания игр и приложений прямо в Minecraft.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Визуальное программирование</h3>
+                            <p>Создавайте сложные игры и приложения с помощью блоков вместо традиционного кода</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Обязательный ресурспак</h3>
+                            <p>Уникальные визуальные эффекты и анимации, доступные только на нашем сервере</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Активное сообщество</h3>
+                            <p>Дружелюбное сообщество разработчиков, готовых помочь и поделиться опытом</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Август-Ноябрь 2024</div>
+                    <div class="timeline-content">
+                        <h4>Начало разработки</h4>
+                        <p>GromoverGets начинает разработку плагина Creative+ для развития навыков программирования</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">6 Января 2025</div>
+                    <div class="timeline-content">
+                        <h4>Бета-тестирование</h4>
+                        <p>Сервер открывается для бета-тестирования с базовым функционалом</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">25 Марта 2025</div>
+                    <div class="timeline-content">
+                        <h4>Официальный запуск</h4>
+                        <p>Сервер становится доступным для всех игроков</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">3 Июля 2025</div>
+                    <div class="timeline-content">
+                        <h4>Система анимаций</h4>
+                        <p>Представлены анимации с использованием обязательного ресурспака</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="section">
+    <!-- Features Section -->
+    <section id="features" class="features">
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-user-shield"></i>
-                Опыт Спарки: Из первых уст
-            </h2>
-            <div class="experience-content">
-                <div class="testimony-card">
-                    <div class="testimony-header">
-                        <img src="Gromovercreative_upscaled.webp" alt="GromoverCreative" class="testimony-image">
-                        <div class="testimony-meta">
-                            <h3>Личный анализ проекта</h3>
-                            <p class="author">Автор: Sparky</p>
-                            <p class="date">Обновлено: <span id="current-date"></span></p>
-                        </div>
+            <h2 class="section-title">Возможности</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-cubes"></i>
                     </div>
-                    <div class="testimony-content">
-                        <div class="testimony-section">
-                            <h4><i class="fas fa-code"></i> Примитивная разработка</h4>
-                            <p>GromoverCreative использует элементарный "кодинг-на-блоках" - подход, который не выдерживает никакой критики с точки зрения профессиональной разработки. Проект демонстрирует хроническое отсутствие архитектурного мышления и технической компетентности.</p>
-                        </div>
-                        <div class="testimony-section">
-                            <h4><i class="fas fa-users"></i> Токсичное сообщество</h4>
-                            <p>Администрация проекта, особенно Громовер и Зиккио, создали атмосферу постоянных конфликтов и буллинга. История с Токкио-Пряник - лишь один из множества примеров их непрофессионального поведения.</p>
-                        </div>
-                        <div class="testimony-section">
-                            <h4><i class="fas fa-clock"></i> Вечная разработка</h4>
-                            <p>Проект находится в состоянии "вечной разработки" без каких-либо видимых результатов. Обещания функционала остаются пустыми словами, а пользователи годами ждут обещанных возможностей.</p>
-                        </div>
+                    <h3>Блочное программирование</h3>
+                    <p>Создавайте логику игр с помощью визуальных блоков, соединяя их для создания сложных систем</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-magic"></i>
                     </div>
-                    <div class="evidence-upload">
-                        <h4><i class="fas fa-upload"></i> Добавить свидетельство</h4>
-                        <form class="upload-form">
-                            <textarea placeholder="Опишите ваш опыт с GromoverCreative..."></textarea>
-                            <input type="file" accept="image/*,.txt,.pdf" multiple>
-                            <button type="submit" class="btn btn-primary">Отправить свидетельство</button>
-                        </form>
+                    <h3>Анимации и эффекты</h3>
+                    <p>Используйте обязательный ресурспак для создания потрясающих визуальных эффектов и анимаций</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-gamepad"></i>
                     </div>
+                    <h3>Создание игр</h3>
+                    <p>Разрабатывайте PvP арены, головоломки, мини-игры и полноценные RPG системы</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-users-cog"></i>
+                    </div>
+                    <h3>События и переменные</h3>
+                    <p>Работайте с системой событий, переменных и функций для создания динамических игр</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Высокая производительность</h3>
+                    <p>Оптимизированный сервер обеспечивает плавную работу даже сложных проектов</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Безопасность</h3>
+                    <p>Надежная система защиты от эксплойтов и читеров для честной игры</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Analysis Section -->
-    <section id="analysis" class="section section-dark">
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-search"></i>
-                Детальный анализ проблем
-            </h2>
-            
-            <!-- Анализ Пропаганды и Газлайтинга -->
-            <div class="analysis-subsection">
-                <h3 class="subsection-title">
-                    <i class="fas fa-brain"></i>
-                    Анализ Пропаганды и Газлайтинга
-                </h3>
-                <div class="propaganda-analysis">
-                    <div class="propaganda-card">
-                        <h4><i class="fas fa-quote-left"></i> "Спарки ищет внимания"</h4>
-                        <p>Классический пример газлайтинга: любая инициатива по разоблачению правды автоматически объявляется "поиском внимания". Это позволяет администрации избегать ответов на конкретные обвинения.</p>
-                        <div class="quote-evidence">
-                            <span class="evidence-tag">Громовер: "Доказывать итак очевидные вещи... над тобой угарает комьюнити"</span>
-                            <span class="evidence-tag">Зиккио: "я в разы умнее тебя"</span>
+            <h2 class="section-title">Скриншоты</h2>
+            <p class="section-subtitle">Посмотрите на возможности нашего сервера в действии</p>
+            <div class="screenshots-grid">
+                <div class="screenshot-item" data-slide="1">
+                    <div class="screenshot-container">
+                        <img src="images/2025-08-05_18.18.54.png" alt="Скриншот 1" class="screenshot-img">
+                        <div class="screenshot-overlay">
+                            <div class="screenshot-info">
+                                <h3>Интерфейс Creative+</h3>
+                                <p>Современный и удобный интерфейс для создания игр</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="propaganda-card">
-                        <h4><i class="fas fa-trophy"></i> Самопровозглашенные победы</h4>
-                        <p>Когда аргументы иссякают, администрация объявляет себя "победителями" дискуссии, игнорируя факты и логику.</p>
-                        <div class="quote-evidence">
-                            <span class="evidence-tag">NightShadow: "Опять чат гпт сгенерировал"</span>
-                            <span class="evidence-tag">Zeekyo: "А кто сказал, что мы завидуем человеку, у которого совсем нет словарного запаса?"</span>
+                </div>
+                <div class="screenshot-item" data-slide="2">
+                    <div class="screenshot-container">
+                        <img src="images/2025-08-05_18.19.07.png" alt="Скриншот 2" class="screenshot-img">
+                        <div class="screenshot-overlay">
+                            <div class="screenshot-info">
+                                <h3>Блочное программирование</h3>
+                                <p>Визуальное создание логики игр с помощью блоков</p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="propaganda-card">
-                        <h4><i class="fas fa-robot"></i> Дегуманизация через мемы</h4>
-                        <p>Использование мемов типа "GPT-мозг" для дегуманизации оппонента и обесценивания его аргументов.</p>
-                        <div class="quote-evidence">
-                            <span class="evidence-tag">Kweik: "нахуя вы на него время тратите"</span>
-                            <span class="evidence-tag">Minxwbs: Пересылка видео для "переключения внимания"</span>
+                </div>
+                <div class="screenshot-item" data-slide="3">
+                    <div class="screenshot-container">
+                        <img src="images/2025-08-05_18.20.11.png" alt="Скриншот 3" class="screenshot-img">
+                        <div class="screenshot-overlay">
+                            <div class="screenshot-info">
+                                <h3>Анимации и эффекты</h3>
+                                <p>Потрясающие визуальные эффекты с использованием ресурспака</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div class="propaganda-card">
-                        <h4><i class="fas fa-crystal-ball"></i> Самоподтверждающаяся паранойя</h4>
-                        <p>Их "предсказания" типа "И он снова ответит/Через ИИ" создают самоподтверждающиеся циклы, которые они же и провоцируют.</p>
                     </div>
                 </div>
             </div>
-
-            <!-- Феномен 'Вечного Спора' -->
-            <div class="analysis-subsection">
-                <h3 class="subsection-title">
-                    <i class="fas fa-infinity"></i>
-                    Феномен 'Вечного Спора' и Цикличной Коммуникации
-                </h3>
-                <div class="cycle-analysis">
-                    <div class="cycle-diagram">
-                        <div class="cycle-step">
-                            <div class="step-number">1</div>
-                            <h4>Обещание "не тратить время"</h4>
-                            <p>Администрация заявляет о прекращении дискуссии</p>
-                        </div>
-                        <div class="cycle-arrow">→</div>
-                        <div class="cycle-step">
-                            <div class="step-number">2</div>
-                            <h4>Нарушение обещания</h4>
-                            <p>Возвращение к дискуссии через несколько часов/дней</p>
-                        </div>
-                        <div class="cycle-arrow">→</div>
-                        <div class="cycle-step">
-                            <div class="step-number">3</div>
-                            <h4>Цензура вместо логики</h4>
-                            <p>Применение мутов и блокировок вместо аргументов</p>
-                        </div>
-                        <div class="cycle-arrow">→</div>
-                        <div class="cycle-step">
-                            <div class="step-number">4</div>
-                            <h4>Одержимость AI</h4>
-                            <p>Единственный аргумент - обвинение в использовании ИИ</p>
-                        </div>
-                        <div class="cycle-arrow">→</div>
-                        <div class="cycle-step">
-                            <div class="step-number">5</div>
-                            <h4>Повторные атаки</h4>
-                            <p>Возвращение к пункту 1 после временного затишья</p>
-                        </div>
-                    </div>
-                    
-                    <div class="cycle-evidence">
-                        <h4><i class="fas fa-clipboard-list"></i> Научные наблюдения паттернов:</h4>
-                        <ul>
-                            <li>Неспособность принять финал дискуссии без цензуры</li>
-                            <li>Патологическая одержимость темой AI как единственный аргумент</li>
-                            <li>Регулярные атаки после периодов затишья</li>
-                            <li>Нарушение собственных обещаний о прекращении дискуссии</li>
-                        </ul>
-                    </div>
+            <div class="screenshots-gallery">
+                <div class="gallery-nav">
+                    <button class="gallery-btn active" data-slide="1">1</button>
+                    <button class="gallery-btn" data-slide="2">2</button>
+                    <button class="gallery-btn" data-slide="3">3</button>
                 </div>
-            </div>
-
-            <!-- Последствия Цензуры -->
-            <div class="analysis-subsection">
-                <h3 class="subsection-title">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    Последствия Цензуры: Отторжение и Фрустрация
-                </h3>
-                <div class="censorship-consequences">
-                    <div class="consequence-card">
-                        <h4><i class="fas fa-users-slash"></i> Недовольство сообщества</h4>
-                        <p>Административные меры (муты, удаление сообщений, блокировки) вызывают фрустрацию у активных участников, а не разрешают конфликты.</p>
-                        <div class="consequence-example">
-                            <strong>Пример "бунта" Токкио-Пряник:</strong>
-                            <p>Конфликт между администраторами, демонстрирующий внутренний разлад в команде модерации.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="consequence-card">
-                        <h4><i class="fas fa-door-open"></i> Исход игроков</h4>
-                        <p>Излишняя модерация приводит к уходу игроков, которые не согласны с авторитарными методами управления.</p>
-                    </div>
-                    
-                    <div class="consequence-card">
-                        <h4><i class="fas fa-fire"></i> Эскалация конфликтов</h4>
-                        <p>Вместо разрешения споров цензура только усугубляет ситуацию, создавая новые поводы для конфронтации.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Оригинальные карточки проблем -->
-            <div class="problems-grid">
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-ban"></i>
-                    </div>
-                    <h3>Цензура и буллинг</h3>
-                    <p>Администрация активно удаляет критику и блокирует пользователей, которые осмеливаются высказать правду о проекте.</p>
-                    <div class="evidence-list">
-                        <span class="evidence-tag">Досье: Громовер</span>
-                        <span class="evidence-tag">Досье: Зиккио</span>
-                        <span class="evidence-tag">Конфликт: Токкио-Пряник</span>
-                    </div>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-bug"></i>
-                    </div>
-                    <h3>Техническая некомпетентность</h3>
-                    <p>Использование примитивных инструментов разработки и отсутствие понимания современных технологий.</p>
-                    <div class="evidence-list">
-                        <span class="evidence-tag">Код-на-блоках</span>
-                        <span class="evidence-tag">Отсутствие архитектуры</span>
-                    </div>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-hourglass-half"></i>
-                    </div>
-                    <h3>Хронические задержки</h3>
-                    <p>Постоянные обещания и отсутствие реального прогресса в разработке функционала.</p>
-                    <div class="evidence-list">
-                        <span class="evidence-tag">Пустые обещания</span>
-                        <span class="evidence-tag">Вечная разработка</span>
-                    </div>
-                </div>
-                <div class="problem-card">
-                    <div class="problem-icon">
-                        <i class="fas fa-users-slash"></i>
-                    </div>
-                    <h3>Токсичное сообщество</h3>
-                    <p>Создание враждебной атмосферы, где конструктивная критика воспринимается как угроза.</p>
-                    <div class="evidence-list">
-                        <span class="evidence-tag">Блокировки</span>
-                        <span class="evidence-tag">Удаление постов</span>
-                    </div>
-                </div>
-                <div class="problem-card critical-problem">
-                    <div class="problem-icon">
-                        <i class="fas fa-skull-crossbones"></i>
-                    </div>
-                    <h3>Переход к Открытой Агрессии</h3>
-                    <p>Эскалация конфликтов до физических угроз и личных атак, демонстрирующая полную потерю эмоционального контроля.</p>
-                    <div class="evidence-list">
-                        <span class="evidence-tag critical">Физические угрозы Zeekyo</span>
-                        <span class="evidence-tag critical">Сокрытие доказательств</span>
-                        <span class="evidence-tag">Коммуникационная деградация</span>
-                    </div>
+                <div class="gallery-viewer">
+                    <img src="images/2025-08-05_18.18.54.png" alt="Галерея" class="gallery-img active" data-slide="1">
+                    <img src="images/2025-08-05_18.19.07.png" alt="Галерея" class="gallery-img" data-slide="2">
+                    <img src="images/2025-08-05_18.20.11.png" alt="Галерея" class="gallery-img" data-slide="3">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Alternatives Section -->
-    <section id="alternatives" class="section">
+    <!-- Guides Section -->
+    <section id="guides" class="guides">
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-star"></i>
-                Альтернативы: Проекты, Которые Вас Заслуживают
-            </h2>
-            <div class="alternatives-grid">
-                <div class="alternative-card">
-                    <div class="alternative-header">
-                        <h3>Mineland</h3>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <ul class="advantages">
-                        <li><i class="fas fa-check"></i> Профессиональная разработка</li>
-                        <li><i class="fas fa-check"></i> Активное сообщество</li>
-                        <li><i class="fas fa-check"></i> Регулярные обновления</li>
-                        <li><i class="fas fa-check"></i> Прозрачная коммуникация</li>
-                    </ul>
-                </div>
-                <div class="alternative-card">
-                    <div class="alternative-header">
-                        <h3>JustMC</h3>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <ul class="advantages">
-                        <li><i class="fas fa-check"></i> Инновационные решения</li>
-                        <li><i class="fas fa-check"></i> Быстрая разработка</li>
-                        <li><i class="fas fa-check"></i> Отзывчивая поддержка</li>
-                        <li><i class="fas fa-check"></i> Современные технологии</li>
-                    </ul>
-                </div>
-                <div class="alternative-card">
-                    <div class="alternative-header">
-                        <h3>Eagle's Creative</h3>
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                    <ul class="advantages">
-                        <li><i class="fas fa-check"></i> Качественный контент</li>
-                        <li><i class="fas fa-check"></i> Дружелюбная атмосфера</li>
-                        <li><i class="fas fa-check"></i> Стабильная работа</li>
-                        <li><i class="fas fa-check"></i> Регулярные события</li>
-                    </ul>
+            <h2 class="section-title">Гайды</h2>
+            <div class="guides-intro">
+                <p class="guides-description">Изучите основы Creative+ и создавайте собственные игры с помощью наших подробных руководств</p>
+            </div>
+            <div class="guides-cta">
+                <h3>Начните обучение прямо сейчас</h3>
+                <p>От простых основ до продвинутых техник - все что нужно для создания игр в Creative+</p>
+                <div class="guides-buttons">
+                    <a href="guides/basics.html" class="btn btn-primary">
+                        <i class="fas fa-graduation-cap btn-icon"></i>
+                        <span class="btn-text">Начать обучение</span>
+                    </a>
+                    <a href="https://discord.gg/NYWQt3tr2h" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-discord btn-icon"></i>
+                        <span class="btn-text">Discord</span>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Archive Section -->
-    <section id="archive" class="section section-dark">
+    <!-- Staff Section -->
+    <section id="staff" class="staff">
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-archive"></i>
-                Документальный Архив
-            </h2>
-            <div class="archive-content">
-                <div class="archive-section">
-                    <h3><i class="fas fa-folder-open"></i> Досье на ключевых Фигурантов</h3>
-                    <div class="dossier-grid">
-                        <div class="dossier-card">
-                            <h4>Громовер</h4>
-                            <p>Главный администратор проекта. Известен своими авторитарными методами управления и неспособностью принимать критику.</p>
-                            <div class="dossier-evidence">
-                                <span class="evidence-tag">Цензура</span>
-                                <span class="evidence-tag">Блокировки</span>
-                                <span class="evidence-tag">Конфликты</span>
-                            </div>
-                        </div>
-                        <div class="dossier-card">
-                            <h4>Зиккио</h4>
-                            <p>Модератор проекта. Активно участвует в создании токсичной атмосферы и подавлении инакомыслия.</p>
-                            <div class="dossier-evidence">
-                                <span class="evidence-tag">Буллинг</span>
-                                <span class="evidence-tag">Удаление постов</span>
-                                <span class="evidence-tag">Предвзятость</span>
-                            </div>
-                        </div>
-                        <div class="dossier-card">
-                            <h4>FL [GROM]</h4>
-                            <p><strong>Роль:</strong> Исполнитель Приказов по Цензуре. Анализ его поведения как следствия командной структуры, а не собственной воли.</p>
-                            <div class="dossier-evidence">
-                                <span class="evidence-tag">"Мне дали приказ / Удалять все его сообщения с ИИ / Поэтому больше он не напишет"</span>
-                                <span class="evidence-tag">Иерархическая природа проблемы</span>
-                            </div>
-                        </div>
-                        <div class="dossier-card">
-                            <h4>Tokkyo35 [NBW]</h4>
-                            <p><strong>Роль:</strong> Токсичный игрок и администратор другого проекта, активно вмешивающийся в дела GromoverCreative.</p>
-                            <div class="dossier-evidence">
-                                <span class="evidence-tag">Публичные атаки на Пряника</span>
-                                <span class="evidence-tag">"втираться в доверие"</span>
-                                <span class="evidence-tag">Внутренний административный конфликт</span>
-                            </div>
-                        </div>
-                        <div class="dossier-card">
-                            <h4>NightShadow [ITD2]</h4>
-                            <p><strong>Роль:</strong> "Колеблющийся элемент" - демонстрирует неоднородность в рядах оппозиции.</p>
-                            <div class="dossier-evidence">
-                                <span class="evidence-tag">"Опять чат гпт сгенерировал"</span>
-                                <span class="evidence-tag">Просьбы "размутить Спарки" для шоу</span>
-                                <span class="evidence-tag">Желание продолжения конфликта</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Новый раздел: Дело Zeekyo -->
-                        <div class="dossier-card special-case">
-                            <h4><i class="fas fa-exclamation-triangle"></i> Zeekyo: Неприкрытые Угрозы и Манипуляции</h4>
-                            <p><strong>Статус:</strong> Критический случай эскалации конфликта до физических угроз</p>
-                            
-                            <div class="zeekyo-cases">
-                                <div class="case-item">
-                                    <h5><i class="fas fa-skull-crossbones"></i> Кейс: Эскалация до Физических Угроз</h5>
-                                    <p><strong>Цитата:</strong> "В целом в Украине у меня есть знакомые, поэтому не проблема будет приехать к нему"</p>
-                                    <p><strong>Анализ:</strong> Классическая форма коммуникационной деградации - переход к личной, физической угрозе. Свидетельствует о полном провале механизмов диалога и отсутствии эмоционального контроля.</p>
-                                    <p><strong>Правовые последствия:</strong> Такие угрозы имеют потенциально серьезные правовые последствия и абсолютно неприемлемы в онлайн-сообществах.</p>
-                                </div>
-                                
-                                <div class="case-item">
-                                    <h5><i class="fas fa-eye-slash"></i> Кейс: Попытка Сокрытия Доказательств</h5>
-                                    <p><strong>Цитата:</strong> "Хм, когда я удалял что-то?" (в ответ на прямое обвинение)</p>
-                                    <p><strong>Анализ:</strong> Демонстрирует попытку активного сокрытия улик и лжи, подтверждающую теорию о недостатке прозрачности и уходе от ответственности.</p>
-                                    <p><strong>Паттерн:</strong> "Стирание истории" является общим паттерном поведения администрации.</p>
-                                </div>
-                                
-                                <div class="case-item">
-                                    <h5><i class="fas fa-ban"></i> Итоговое Решение Sparky</h5>
-                                    <p><strong>Действие:</strong> Sparky инициировал блокировку Zeekyo первым после этих угроз.</p>
-                                    <p><strong>Значение:</strong> Окончательное и осознанное прерывание деструктивной коммуникации, демонстрирующее контроль над ситуацией.</p>
-                                </div>
-                            </div>
-                            
-                            <div class="dossier-evidence">
-                                <span class="evidence-tag critical">Физические угрозы</span>
-                                <span class="evidence-tag critical">Сокрытие доказательств</span>
-                                <span class="evidence-tag critical">Коммуникационная деградация</span>
-                                <span class="evidence-tag">Блокировка Sparky</span>
-                            </div>
-                        </div>
-                    </div>
+            <h2 class="section-title">Команда</h2>
+            <div class="staff-grid">
+                <div class="staff-card">
+                    <div class="staff-avatar">G</div>
+                    <h3>GromoverGets</h3>
+                    <div class="staff-role">Основатель и разработчик</div>
                 </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">Z</div>
+                    <h3>zeekyo_</h3>
+                    <div class="staff-role">Дизайнер</div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">T</div>
+                    <h3>tea_with_sugar</h3>
+                    <div class="staff-role">Разработчик</div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">S</div>
+                    <h3>savaksp2547660</h3>
+                    <div class="staff-role">Разработчик и Discord модератор</div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">X</div>
+                    <h3>xdb</h3>
+                    <div class="staff-role">Администратор, строитель</div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">F</div>
+                    <h3>Fortuna12</h3>
+                    <div class="staff-role">Глава поддержки</div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">S</div>
+                    <h3>SirTools</h3>
+                    <div class="staff-role">Администратор и строитель</div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">I</div>
+                    <h3>Iliushenka</h3>
+                    <div class="staff-role">Менеджер</div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">C</div>
+                    <h3>CallMeLord</h3>
+                    <div class="staff-role">Менеджер</div>
+                </div>
+                <div class="staff-card">
+                    <div class="staff-avatar">A</div>
+                    <h3>apacheflink</h3>
+                    <div class="staff-role">Главный тестер</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Хронология Ключевых Конфликтов -->
-                <div class="archive-section">
-                    <h3><i class="fas fa-calendar-alt"></i> Хронология Ключевых Конфликтов</h3>
-                    <div class="conflicts-timeline">
-                        <div class="conflict-entry">
-                            <div class="conflict-date">Конфликт 1</div>
-                            <div class="conflict-details">
-                                <h4>Попытка дискредитации через AI</h4>
-                                <p><strong>Участники:</strong> Громовер, Зиккио vs Sparky</p>
-                                <p><strong>Суть:</strong> Попытка убедить в "бесполезности ИИ" как аргумента</p>
-                                <p><strong>Итог:</strong> Громовер вынужден перейти на оскорбления и прибегнуть к муту</p>
-                                <div class="conflict-quotes">
-                                    <span class="quote">Громовер: "Доказывать итак очевидные вещи... над тобой угарает комьюнити... ты непробиваемый человек..."</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="conflict-entry">
-                            <div class="conflict-date">Конфликт 2</div>
-                            <div class="conflict-details">
-                                <h4>Дегуманизация через мемы</h4>
-                                <p><strong>Участники:</strong> NightShadow, Kweik vs Sparky</p>
-                                <p><strong>Суть:</strong> Использование "GPT-мозг" для обесценивания аргументов</p>
-                                <p><strong>Итог:</strong> Демонстрация их собственной одержимости AI</p>
-                                <div class="conflict-quotes">
-                                    <span class="quote">NightShadow: "Опять чат гпт сгенерировал"</span>
-                                    <span class="quote">Kweik: "нахуя вы на него время тратите"</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="conflict-entry">
-                            <div class="conflict-date">Конфликт 3</div>
-                            <div class="conflict-details">
-                                <h4>Внутренний административный разлад</h4>
-                                <p><strong>Участники:</strong> Tokkyo35 vs Пряник</p>
-                                <p><strong>Суть:</strong> Публичные атаки на других администраторов</p>
-                                <p><strong>Итог:</strong> Демонстрация внутренних проблем в команде модерации</p>
-                                <div class="conflict-quotes">
-                                    <span class="quote">Tokkyo35: "втираться в доверие"</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="conflict-entry critical-conflict">
-                            <div class="conflict-date">Конфликт 4</div>
-                            <div class="conflict-details">
-                                <h4><i class="fas fa-exclamation-triangle"></i> Дело Zeekyo: Физические Угрозы</h4>
-                                <p><strong>Участники:</strong> Zeekyo vs Sparky</p>
-                                <p><strong>Суть:</strong> Эскалация конфликта до прямых физических угроз</p>
-                                <p><strong>Итог:</strong> Блокировка Zeekyo Sparky после неприемлемых угроз</p>
-                                <div class="conflict-quotes">
-                                    <span class="quote critical">Zeekyo: "В целом в Украине у меня есть знакомые, поэтому не проблема будет приехать к нему"</span>
-                                    <span class="quote">Zeekyo: "Хм, когда я удалял что-то?" (попытка сокрытия)</span>
-                                </div>
-                                <div class="conflict-evidence">
-                                    <p><strong>Доказательства:</strong> Скриншоты переписки (Screenshot_21-31) демонстрируют полную эскалацию конфликта</p>
-                                    <p><strong>Анализ:</strong> Классический случай коммуникационной деградации - переход к личным угрозам</p>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Comparison Section -->
+    <section id="comparison" class="comparison">
+        <div class="container">
+            <h2 class="section-title">Сравнение серверов Creative+</h2>
+            <div class="comparison-table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Сервер</th>
+                            <th>Уровень продвинутости</th>
+                            <th>Уникальные функции</th>
+                            <th>Активность администрации</th>
+                            <th>Поддержка игроков</th>
+                            <th>Интерфейс / UX</th>
+                            <th>Скорость обновлений</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="highlighted">
+                            <td><strong>GromoverCreative</strong></td>
+                            <td class="status-high"><i class="fas fa-fire"></i> Высокий (6 место)</td>
+                            <td class="status-high"><i class="fas fa-palette"></i> Ресурспак, анимации, API</td>
+                            <td class="status-high"><i class="fas fa-check"></i> Постоянная</td>
+                            <td class="status-high"><i class="fas fa-check"></i> Быстрая помощь</td>
+                            <td class="status-high"><i class="fas fa-star"></i> Современный, удобный</td>
+                            <td class="status-high"><i class="fas fa-rocket"></i> Частые апдейты</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mineland</strong></td>
+                            <td class="status-medium"><i class="fas fa-minus"></i> Средний (4 место)</td>
+                            <td class="status-low"><i class="fas fa-times"></i> Закрытый код, ограничения</td>
+                            <td class="status-medium"><i class="fas fa-exclamation-triangle"></i> Нестабильная</td>
+                            <td class="status-medium"><i class="fas fa-exclamation-triangle"></i> Ограниченная</td>
+                            <td class="status-low"><i class="fas fa-times"></i> Устаревший</td>
+                            <td class="status-low"><i class="fas fa-clock"></i> Медленные</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Eagle's Creative</strong></td>
+                            <td class="status-high"><i class="fas fa-fire"></i> Высокий (3 место)</td>
+                            <td class="status-high"><i class="fas fa-puzzle-piece"></i> OpenCreative+, 1.21+</td>
+                            <td class="status-high"><i class="fas fa-check"></i> Активная</td>
+                            <td class="status-high"><i class="fas fa-check"></i> Поддержка есть</td>
+                            <td class="status-high"><i class="fas fa-thumbs-up"></i> Современный</td>
+                            <td class="status-high"><i class="fas fa-bolt"></i> Регулярные</td>
+                        </tr>
+                        <tr>
+                            <td><strong>JustMC</strong></td>
+                            <td class="status-high"><i class="fas fa-fire"></i> Очень высокий (1 место)</td>
+                            <td class="status-high"><i class="fas fa-microscope"></i> Глубокий кодинг</td>
+                            <td class="status-unknown"><i class="fas fa-question"></i> Неизвестно</td>
+                            <td class="status-unknown"><i class="fas fa-question"></i> Неизвестно</td>
+                            <td class="status-medium"><i class="fas fa-minus"></i> Средний</td>
+                            <td class="status-unknown"><i class="fas fa-question"></i> Неизвестно</td>
+                        </tr>
+                        <tr>
+                            <td><strong>FireFlow</strong></td>
+                            <td class="status-medium"><i class="fas fa-flask"></i> Экспериментальный</td>
+                            <td class="status-high"><i class="fas fa-project-diagram"></i> Кодинг через ноды</td>
+                            <td class="status-medium"><i class="fas fa-exclamation-triangle"></i> Медленная</td>
+                            <td class="status-medium"><i class="fas fa-exclamation-triangle"></i> Слабая помощь</td>
+                            <td class="status-low"><i class="fas fa-robot"></i> Необычный</td>
+                            <td class="status-low"><i class="fas fa-clock"></i> Нерегулярные</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="comparison-highlights">
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-trophy"></i>
                     </div>
+                    <h3>Лидерство в инновациях</h3>
+                    <p>Первый сервер с обязательным ресурспаком и системой анимаций</p>
                 </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Активное сообщество</h3>
+                    <p>Постоянная поддержка и быстрое решение проблем</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Быстрые обновления</h3>
+                    <p>Регулярные обновления и новые функции</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Признаки Одержимости и Зависимости -->
-                <div class="archive-section">
-                    <h3><i class="fas fa-eye"></i> Признаки Одержимости и Зависимости</h3>
-                    <div class="obsession-evidence">
-                        <div class="obsession-card">
-                            <h4><i class="fas fa-poll"></i> Голосования и поиск</h4>
-                            <p>Их опросы демонстрируют потребность в присутствии Sparky:</p>
-                            <div class="obsession-examples">
-                                <span class="evidence-tag">"Самое мощное действие Спарки?"</span>
-                                <span class="evidence-tag">Fernyal: "Ребят вы не знаете куда Спарки пропал"</span>
-                                <span class="evidence-tag">Fernyal: "Странно для него"</span>
+    <!-- Connect Section -->
+    <section id="connect" class="connect">
+        <div class="container">
+            <div class="connect-content">
+                <div class="connect-info">
+                    <h2 class="section-title">Подключиться к серверу</h2>
+                    <div class="connect-item">
+                        <h3>Информация для подключения</h3>
+                        <div class="ip-container">
+                            <div class="ip-item">
+                                <span class="ip-label">Основной IP:</span>
+                                <span class="ip-address" onclick="copyToClipboard('gromover.pw')">gromover.pw</span>
+                            </div>
+                            <div class="ip-item">
+                                <span class="ip-label">Резервный IP:</span>
+                                <span class="ip-address" onclick="copyToClipboard('87.120.186.1')">87.120.186.1</span>
                             </div>
                         </div>
-                        
-                        <div class="obsession-card">
-                            <h4><i class="fas fa-search"></i> Постоянный мониторинг</h4>
-                            <p>Демонстрация их зависимости от присутствия оппонента:</p>
-                            <div class="obsession-examples">
-                                <span class="evidence-tag">Регулярные проверки активности</span>
-                                <span class="evidence-tag">Беспокойство при отсутствии</span>
-                                <span class="evidence-tag">Потребность в "шоу"</span>
-                            </div>
-                        </div>
+                        <p class="ip-note">Загрузка сервера в списке серверов может занять до 10 секунд</p>
                     </div>
                 </div>
-
-                <div class="archive-section">
-                    <h3><i class="fas fa-images"></i> Мемы и материалы</h3>
-                    <div class="memes-gallery">
-                        <div class="meme-placeholder">
-                            <i class="fas fa-image"></i>
-                            <p>Мемы о GromoverCreative</p>
-                        </div>
-                        <div class="meme-placeholder">
-                            <i class="fas fa-video"></i>
-                            <p>Видео-доказательства</p>
-                        </div>
-                        <div class="meme-placeholder">
-                            <i class="fas fa-file-alt"></i>
-                            <p>Документы и скриншоты</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="archive-section">
-                    <h3><i class="fas fa-upload"></i> Анонимная загрузка свидетельств</h3>
-                    <form class="anonymous-upload">
-                        <input type="text" placeholder="Название свидетельства (опционально)" class="form-input">
-                        <textarea placeholder="Опишите ваш опыт..." class="form-textarea"></textarea>
-                        <input type="file" accept="image/*,.txt,.pdf,.mp4" multiple class="form-file">
-                        <button type="submit" class="btn btn-secondary">Отправить анонимно</button>
-                    </form>
-                    <div style="margin-top: 20px; text-align: center;">
-                        <a href="dossiers.html" class="btn btn-primary" style="text-decoration: none; display: inline-block;">
-                            <i class="fas fa-folder-open"></i> Открыть все досье
-                        </a>
-                        <button id="view-all-dossiers" class="btn btn-secondary" style="margin-left: 10px;">
-                            <i class="fas fa-eye"></i> Просмотреть все свидетельства
-                        </button>
-                        <button id="export-dossiers" class="btn btn-secondary" style="margin-left: 10px;">
-                            <i class="fas fa-download"></i> Экспорт данных
-                        </button>
-                    </div>
+                <div class="connect-links">
+                    <a href="https://discord.gg/NYWQt3tr2h" class="connect-link" target="_blank">
+                        <i class="fab fa-discord link-icon"></i>
+                        <span class="link-text">Discord</span>
+                    </a>
+                    <a href="https://shop.gromover.pw" class="connect-link" target="_blank">
+                        <i class="fas fa-shopping-cart link-icon"></i>
+                        <span class="link-text">Магазин</span>
+                    </a>
+                    <a href="https://forum.gromover.pw" class="connect-link" target="_blank">
+                        <i class="fas fa-comments link-icon"></i>
+                        <span class="link-text">Форум</span>
+                    </a>
+                    <a href="https://wiki.gromover.pw" class="connect-link" target="_blank">
+                        <i class="fas fa-book link-icon"></i>
+                        <span class="link-text">Wiki</span>
+                    </a>
+                    <a href="https://t.me/gromovercreative" class="connect-link" target="_blank">
+                        <i class="fab fa-telegram link-icon"></i>
+                        <span class="link-text">Telegram</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -580,21 +502,35 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-info">
-                    <p><strong>Разработано и Курируется:</strong> Sparky</p>
-                    <p>Сайт создан для разоблачения правды о GromoverCreative</p>
+                <div class="footer-logo">
+                    <img src="Gromovercreative_upscaled.webp" alt="GromoverCreative" class="footer-logo-img">
+                    <span class="footer-logo-text">GromoverCreative</span>
                 </div>
                 <div class="footer-links">
-                    <a href="#experience">Опыт Спарки</a>
-                    <a href="#analysis">Анализ проблем</a>
-                    <a href="#alternatives">Альтернативы</a>
-                    <a href="#archive">Архив</a>
-                    <a href="admin.html" style="color: #ff6b6b;">Админ-панель</a>
+                    <a href="#home">Главная</a>
+                    <a href="#about">О сервере</a>
+                    <a href="#features">Возможности</a>
+                    <a href="#guides">Гайды</a>
+                    <a href="#staff">Команда</a>
                 </div>
+                <div class="footer-social">
+                    <a href="https://discord.gg/NYWQt3tr2h" class="social-link" target="_blank">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <a href="https://t.me/gromovercreative" class="social-link" target="_blank">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://shop.gromover.pw" class="social-link" target="_blank">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GromoverCreative. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html> 
