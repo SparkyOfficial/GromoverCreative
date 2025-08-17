@@ -703,4 +703,333 @@ const debouncedScrollHandler = debounce(function() {
     // Scroll handling logic here if needed
 }, 16);
 
-window.addEventListener('scroll', debouncedScrollHandler); 
+// Interactive Elements for Modernized Platform
+
+// Evidence Gallery and Hotspot System
+document.addEventListener('DOMContentLoaded', function() {
+    initializeEvidenceGallery();
+    initializeHotspotSystem();
+    initializeInteractiveCycle();
+    initializeVideoIntegration();
+});
+
+// Evidence Gallery Functionality
+function initializeEvidenceGallery() {
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const evidenceItems = document.querySelectorAll('.evidence-item');
+    
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // Update active filter button
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            // Filter evidence items
+            evidenceItems.forEach(item => {
+                if (filter === 'all') {
+                    item.style.display = 'block';
+                    item.style.opacity = '1';
+                } else {
+                    const category = item.getAttribute('data-category');
+                    const tags = item.querySelectorAll('.tag');
+                    let shouldShow = false;
+                    
+                    // Check category match
+                    if (category && category.includes(filter)) {
+                        shouldShow = true;
+                    }
+                    
+                    // Check tag match
+                    tags.forEach(tag => {
+                        if (tag.classList.contains(filter)) {
+                            shouldShow = true;
+                        }
+                    });
+                    
+                    if (shouldShow) {
+                        item.style.display = 'block';
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.display = 'none';
+                        item.style.opacity = '0';
+                    }
+                }
+            });
+            
+            // Add animation effect
+            setTimeout(() => {
+                evidenceItems.forEach(item => {
+                    if (item.style.display !== 'none') {
+                        item.style.transform = 'translateY(0)';
+                    }
+                });
+            }, 100);
+        });
+    });
+    
+    // View mode functionality
+    const viewButtons = document.querySelectorAll('.view-btn');
+    const evidenceGrid = document.querySelector('.evidence-grid');
+    
+    viewButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            viewButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            const view = this.getAttribute('data-view');
+            
+            switch(view) {
+                case 'grid':
+                    evidenceGrid.style.display = 'grid';
+                    evidenceGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
+                    break;
+                case 'timeline':
+                    evidenceGrid.style.display = 'flex';
+                    evidenceGrid.style.flexDirection = 'column';
+                    evidenceGrid.style.gridTemplateColumns = 'none';
+                    break;
+                case 'fullscreen':
+                    openFullscreenGallery();
+                    break;
+            }
+        });
+    });
+}
+
+// Hotspot System Functionality
+function initializeHotspotSystem() {
+    const hotspots = document.querySelectorAll('.hotspot-demo, .evidence-item.hotspot');
+    
+    hotspots.forEach(hotspot => {
+        // Create tooltip element
+        const tooltip = document.createElement('div');
+        tooltip.className = 'hotspot-tooltip';
+        tooltip.style.cssText = `
+            position: absolute;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 2px solid #4a90e2;
+            border-radius: 8px;
+            padding: 15px;
+            max-width: 300px;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+        `;
+        document.body.appendChild(tooltip);
+        
+        hotspot.addEventListener('mouseenter', function(e) {
+            const screenshot = this.getAttribute('data-screenshot');
+            const category = this.getAttribute('data-category');
+            
+            if (screenshot) {
+                tooltip.innerHTML = `
+                    <div style="color: #4a90e2; font-weight: bold; margin-bottom: 8px;">
+                        ${screenshot}
+                    </div>
+                    <div style="color: #ffffff; font-size: 0.9rem; margin-bottom: 8px;">
+                        Категория: ${category || 'Общее'}
+                    </div>
+                    <div style="color: #cccccc; font-size: 0.8rem;">
+                        Кликните для полного просмотра
+                    </div>
+                `;
+                
+                // Position tooltip
+                const rect = this.getBoundingClientRect();
+                tooltip.style.left = rect.left + 'px';
+                tooltip.style.top = (rect.bottom + 10) + 'px';
+                tooltip.style.opacity = '1';
+            }
+        });
+        
+        hotspot.addEventListener('mouseleave', function() {
+            tooltip.style.opacity = '0';
+        });
+        
+        hotspot.addEventListener('click', function() {
+            const screenshot = this.getAttribute('data-screenshot');
+            if (screenshot) {
+                openScreenshotModal(screenshot);
+            }
+        });
+    });
+}
+
+// Interactive Cycle Diagram Functionality
+function initializeInteractiveCycle() {
+    const cycleSteps = document.querySelectorAll('.interactive-cycle-step');
+    const evidencePanel = document.getElementById('evidence-connections');
+    
+    if (!evidencePanel) return;
+    
+    const evidenceData = {
+        'refusal': {
+            title: 'Отказ от Мирного Договора',
+            evidence: ['Screenshot_29.png', 'Screenshot_30.png'],
+            description: 'Документированные отказы от принятия правил и ограничений власти'
+        },
+        'censorship': {
+            title: 'Цензура вместо Аргументов',
+            evidence: ['Screenshot_31.png'],
+            description: 'Систематическое подавление через муты и блокировки'
+        },
+        'ai-obsession': {
+            title: 'Одержимость AI',
+            evidence: ['Screenshot_21.png', 'Screenshot_22.png', 'Screenshot_23.png'],
+            description: 'Постоянные обвинения в использовании ИИ как единственный аргумент'
+        },
+        'escalation': {
+            title: 'Физические Угрозы',
+            evidence: ['Screenshot_25.png'],
+            description: 'Переход к экстремальным мерам и прямым угрозам'
+        },
+        'cover-up': {
+            title: 'Сокрытие Доказательств',
+            evidence: ['Screenshot_26.png'],
+            description: 'Попытки удаления и сокрытия компрометирующих материалов'
+        }
+    };
+    
+    cycleSteps.forEach(step => {
+        step.addEventListener('mouseenter', function() {
+            const evidenceType = this.getAttribute('data-evidence');
+            const data = evidenceData[evidenceType];
+            
+            if (data) {
+                evidencePanel.innerHTML = `
+                    <h5 style="color: #4a90e2; margin-bottom: 10px;">${data.title}</h5>
+                    <p style="color: #cccccc; margin-bottom: 15px;">${data.description}</p>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        ${data.evidence.map(screenshot => 
+                            `<span style="background: rgba(74, 144, 226, 0.2); padding: 4px 8px; border-radius: 4px; color: #4a90e2; font-size: 0.8rem; cursor: pointer;" onclick="openScreenshotModal('${screenshot}')">${screenshot}</span>`
+                        ).join('')}
+                    </div>
+                `;
+            }
+            
+            // Highlight connections
+            this.classList.add('active');
+        });
+        
+        step.addEventListener('mouseleave', function() {
+            this.classList.remove('active');
+            evidencePanel.innerHTML = '<p>Наведите на элементы диаграммы для просмотра связей с доказательствами</p>';
+        });
+    });
+}
+
+// Video Integration Functionality
+function initializeVideoIntegration() {
+    const videoPlaceholder = document.querySelector('.video-embed-placeholder');
+    
+    if (videoPlaceholder) {
+        videoPlaceholder.addEventListener('click', function() {
+            // Placeholder for YouTube video integration
+            showNotification('YouTube видео будет интегрировано в следующем обновлении', 'info');
+        });
+    }
+}
+
+// Screenshot Modal Functionality
+function openScreenshotModal(screenshot) {
+    // Create modal
+    const modal = document.createElement('div');
+    modal.className = 'screenshot-modal';
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    `;
+    
+    modal.innerHTML = `
+        <div style="position: relative; max-width: 90%; max-height: 90%; background: #1a1a2e; border-radius: 12px; padding: 20px; border: 2px solid #4a90e2;">
+            <button onclick="this.closest('.screenshot-modal').remove()" style="position: absolute; top: 10px; right: 10px; background: #d32f2f; border: none; color: white; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 18px;">×</button>
+            <h3 style="color: #4a90e2; margin-bottom: 15px;"> ${screenshot}</h3>
+            <div style="text-align: center; color: #cccccc; padding: 40px;">
+                <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 15px; color: #4a90e2;"></i>
+                <p>Скриншот будет отображен здесь</p>
+                <p style="font-size: 0.9rem; opacity: 0.7;">Изображение: ${screenshot}</p>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(modal);
+    
+    // Animate in
+    setTimeout(() => {
+        modal.style.opacity = '1';
+    }, 10);
+    
+    // Close on background click
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
+// Fullscreen Gallery Functionality
+function openFullscreenGallery() {
+    showNotification('Полноэкранный режим галереи будет добавлен в следующем обновлении', 'info');
+}
+
+// Evidence Search Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchButton = document.getElementById('evidence-search');
+    if (searchButton) {
+        searchButton.addEventListener('click', function() {
+            const searchTerm = prompt('Введите поисковый запрос для поиска по доказательствам:');
+            if (searchTerm) {
+                searchEvidence(searchTerm);
+            }
+        });
+    }
+});
+
+function searchEvidence(term) {
+    const evidenceItems = document.querySelectorAll('.evidence-item');
+    const searchTerm = term.toLowerCase();
+    let foundCount = 0;
+    
+    evidenceItems.forEach(item => {
+        const title = item.querySelector('.evidence-title')?.textContent.toLowerCase() || '';
+        const description = item.querySelector('.evidence-description')?.textContent.toLowerCase() || '';
+        const tags = Array.from(item.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
+            item.style.display = 'block';
+            item.style.border = '2px solid #ff6b6b';
+            item.style.boxShadow = '0 0 15px rgba(255, 107, 107, 0.5)';
+            foundCount++;
+        } else {
+            item.style.display = 'none';
+        }
+    });
+    
+    showNotification(`Найдено доказательств: ${foundCount}`, foundCount > 0 ? 'success' : 'warning');
+    
+    // Reset search after 10 seconds
+    setTimeout(() => {
+        evidenceItems.forEach(item => {
+            item.style.display = 'block';
+            item.style.border = '';
+            item.style.boxShadow = '';
+        });
+    }, 10000);
+}
+
+window.addEventListener('scroll', debouncedScrollHandler);
