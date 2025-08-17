@@ -37,17 +37,16 @@ document.addEventListener('DOMContentLoaded', function() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries, observer) {
+    const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('animated-fadeIn');
-                observer.unobserve(entry.target);
+                entry.target.classList.add('visible');
             }
         });
     }, observerOptions);
 
     // Observe elements for scroll animations
-    const animatedElements = document.querySelectorAll('.card, .section');
+    const animatedElements = document.querySelectorAll('.problem-card, .alternative-card, .dossier-card');
     animatedElements.forEach(el => observer.observe(el));
 
     // Enhanced form handling for dossier uploads
@@ -193,6 +192,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Header scroll effect
+    let lastScrollTop = 0;
+    const header = document.querySelector('.header');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > lastScrollTop && scrollTop > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+
+    // Add header transition
+    header.style.transition = 'transform 0.3s ease-in-out';
+
     // Statistics counter animation
     const statNumbers = document.querySelectorAll('.stat-number');
     statNumbers.forEach(stat => {
@@ -200,6 +220,14 @@ document.addEventListener('DOMContentLoaded', function() {
         if (finalValue !== '∞' && finalValue !== '100%') {
             animateCounter(stat, 0, parseInt(finalValue), 2000);
         }
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', function() {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        const rate = scrolled * -0.5;
+        hero.style.transform = `translateY(${rate}px)`;
     });
 
     // Add loading animation
@@ -677,10 +705,12 @@ const debouncedScrollHandler = debounce(function() {
 
 // Interactive Elements for Modernized Platform
 
+// Evidence Gallery System (Hotspot system removed)
+document.addEventListener('DOMContentLoaded', function() {
     initializeEvidenceGallery();
     initializeInteractiveCycle();
     initializeVideoIntegration();
-    initializeEvidenceSearch();
+});
 
 // Evidence Gallery Functionality
 function initializeEvidenceGallery() {
@@ -898,7 +928,8 @@ function openFullscreenGallery() {
     showNotification('Полноэкранный режим галереи будет добавлен в следующем обновлении', 'info');
 }
 
-function initializeEvidenceSearch() {
+// Evidence Search Functionality
+document.addEventListener('DOMContentLoaded', function() {
     const searchButton = document.getElementById('evidence-search');
     if (searchButton) {
         searchButton.addEventListener('click', function() {
@@ -908,7 +939,7 @@ function initializeEvidenceSearch() {
             }
         });
     }
-}
+});
 
 function searchEvidence(term) {
     const evidenceItems = document.querySelectorAll('.evidence-item');
