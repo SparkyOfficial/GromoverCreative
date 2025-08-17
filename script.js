@@ -705,10 +705,9 @@ const debouncedScrollHandler = debounce(function() {
 
 // Interactive Elements for Modernized Platform
 
-// Evidence Gallery and Hotspot System
+// Evidence Gallery System (Hotspot system removed)
 document.addEventListener('DOMContentLoaded', function() {
     initializeEvidenceGallery();
-    initializeHotspotSystem();
     initializeInteractiveCycle();
     initializeVideoIntegration();
 });
@@ -799,66 +798,8 @@ function initializeEvidenceGallery() {
     });
 }
 
-// Hotspot System Functionality
-function initializeHotspotSystem() {
-    const hotspots = document.querySelectorAll('.hotspot-demo, .evidence-item.hotspot');
-    
-    hotspots.forEach(hotspot => {
-        // Create tooltip element
-        const tooltip = document.createElement('div');
-        tooltip.className = 'hotspot-tooltip';
-        tooltip.style.cssText = `
-            position: absolute;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            border: 2px solid #4a90e2;
-            border-radius: 8px;
-            padding: 15px;
-            max-width: 300px;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
-        `;
-        document.body.appendChild(tooltip);
-        
-        hotspot.addEventListener('mouseenter', function(e) {
-            const screenshot = this.getAttribute('data-screenshot');
-            const category = this.getAttribute('data-category');
-            
-            if (screenshot) {
-                tooltip.innerHTML = `
-                    <div style="color: #4a90e2; font-weight: bold; margin-bottom: 8px;">
-                        ${screenshot}
-                    </div>
-                    <div style="color: #ffffff; font-size: 0.9rem; margin-bottom: 8px;">
-                        Категория: ${category || 'Общее'}
-                    </div>
-                    <div style="color: #cccccc; font-size: 0.8rem;">
-                        Кликните для полного просмотра
-                    </div>
-                `;
-                
-                // Position tooltip
-                const rect = this.getBoundingClientRect();
-                tooltip.style.left = rect.left + 'px';
-                tooltip.style.top = (rect.bottom + 10) + 'px';
-                tooltip.style.opacity = '1';
-            }
-        });
-        
-        hotspot.addEventListener('mouseleave', function() {
-            tooltip.style.opacity = '0';
-        });
-        
-        hotspot.addEventListener('click', function() {
-            const screenshot = this.getAttribute('data-screenshot');
-            if (screenshot) {
-                openScreenshotModal(screenshot);
-            }
-        });
-    });
-}
+// Hotspot System Removed - Simplified Evidence Display
+// Evidence items now display directly without interactive hotspots
 
 // Interactive Cycle Diagram Functionality
 function initializeInteractiveCycle() {
