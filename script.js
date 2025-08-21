@@ -1,976 +1,404 @@
-// DOM Content Loaded
+// The New Order: Last Days of Europe - Tube TV Interface
 document.addEventListener('DOMContentLoaded', function() {
-    // Set current date
-    const currentDate = new Date().toLocaleDateString('ru-RU', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+    initializeTNOInterface();
+});
+
+function initializeTNOInterface() {
+    addTubeTVEffects();
+    addMilitaryNotifications();
+    addScrollAnimations();
+    addInteractiveElements();
+    addEvidenceSystem();
+    addKeyboardShortcuts();
+    addLoadingScreen();
+}
+
+function addTubeTVEffects() {
+    // Add tube TV scanlines effect
+    const scanlines = document.createElement('div');
+    scanlines.className = 'tube-tv-scanlines';
+    scanlines.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(135, 206, 235, 0.02) 2px,
+            rgba(135, 206, 235, 0.02) 4px
+        );
+        pointer-events: none;
+        z-index: 1;
+        animation: scanlineMove 10s linear infinite;
+    `;
+    document.body.appendChild(scanlines);
+
+    // Add CSS for tube TV animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes scanlineMove {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(4px); }
+        }
+        
+        .tube-tv-text {
+            font-family: 'Source Code Pro', monospace;
+            color: #87CEEB;
+            text-shadow: 0 0 5px #87CEEB;
+        }
+        
+        .military-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            border: 2px solid #87CEEB;
+            color: #87CEEB;
+            padding: 15px 20px;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 20px rgba(135, 206, 235, 0.3);
+        }
+        
+        .military-notification.show {
+            transform: translateX(0);
+        }
+        
+        .military-notification.critical {
+            border-color: #FF6B6B;
+            color: #FF6B6B;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+        }
+        
+        .evidence-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .evidence-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .evidence-content {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            border: 2px solid #87CEEB;
+            padding: 30px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+            position: relative;
+        }
+        
+        .evidence-content img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #87CEEB;
+        }
+        
+        .evidence-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #87CEEB;
+            font-size: 1.5rem;
+            cursor: pointer;
+            font-family: 'Source Code Pro', monospace;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10002;
+            color: #87CEEB;
+            font-family: 'Source Code Pro', monospace;
+        }
+        
+        .loading-text {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .loading-bar {
+            width: 300px;
+            height: 4px;
+            background: #1a1a1a;
+            border: 1px solid #87CEEB;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .loading-progress {
+            height: 100%;
+            background: #87CEEB;
+            width: 0%;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 10px #87CEEB;
+        }
+        
+        .tube-tv-glow {
+            animation: tubeTVGlow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes tubeTVGlow {
+            0% { text-shadow: 0 0 5px #87CEEB, 0 0 10px #87CEEB; }
+            100% { text-shadow: 0 0 10px #87CEEB, 0 0 20px #87CEEB, 0 0 30px #87CEEB; }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Add tube TV glow effect to important elements
+    document.querySelectorAll('.hero-title, .section-title, .problem-card h3').forEach(el => {
+        el.classList.add('tube-tv-glow');
     });
-    document.getElementById('current-date').textContent = currentDate;
+}
 
-    // Initialize dossier storage
-    initializeDossierStorage();
+function addMilitaryNotifications() {
+    const notificationContainer = document.createElement('div');
+    notificationContainer.id = 'military-notifications';
+    document.body.appendChild(notificationContainer);
+}
 
-    // Smooth scrolling for navigation links
-    const navLinks = document.querySelectorAll('.nav-menu a, .footer-links a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetSection.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+function showMilitaryNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `military-notification ${type}`;
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 1.2rem;">${type === 'critical' ? '⚠' : '⚡'}</span>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    document.getElementById('military-notifications').appendChild(notification);
+    
+    // Show notification
+    setTimeout(() => notification.classList.add('show'), 100);
+    
+    // Remove notification after 5 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 300);
+    }, 5000);
+}
 
-    // Scroll animations
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver(function(entries) {
+function addScrollAnimations() {
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-            }
-        });
-    }, observerOptions);
-
-    // Observe elements for scroll animations
-    const animatedElements = document.querySelectorAll('.problem-card, .alternative-card, .dossier-card');
-    animatedElements.forEach(el => observer.observe(el));
-
-    // Enhanced form handling for dossier uploads
-    // IP-based moderation system
-    const BLACKLISTED_IPS = []; // Убрали IP модератора из черного списка
-    const MODERATION_ENABLED = true;
-
-    // Function to get client IP (simulated for static site)
-    async function getClientIP() {
-        try {
-            const response = await fetch('https://api.ipify.org?format=json');
-            const data = await response.json();
-            return data.ip;
-        } catch (error) {
-            console.log('Could not get IP, using fallback');
-            return 'unknown';
-        }
-    }
-
-    // Function to check if IP is blacklisted
-    function isIPBlacklisted(ip) {
-        return BLACKLISTED_IPS.includes(ip);
-    }
-
-    // Enhanced form handling with IP moderation
-    async function handleFormSubmission(form, formType) {
-        const clientIP = await getClientIP();
-        
-        if (MODERATION_ENABLED && isIPBlacklisted(clientIP)) {
-            console.log(`Content from blacklisted IP ${clientIP} flagged for moderation`);
-            showNotification('Ваше свидетельство отправлено на модерацию.', 'warning');
-            return false; // Content flagged but not saved
-        }
-        
-        const formData = new FormData(form);
-        const textarea = form.querySelector('textarea');
-        const fileInput = form.querySelector('input[type="file"]');
-        const titleInput = form.querySelector('input[type="text"]');
-
-        if (textarea && textarea.value.trim()) {
-            const dossierEntry = {
-                id: Date.now(),
-                title: titleInput ? titleInput.value.trim() : 'Анонимное свидетельство',
-                content: textarea.value.trim(),
-                files: [],
-                timestamp: new Date().toISOString(),
-                type: formType,
-                status: 'pending',
-                clientIP: clientIP,
-                moderated: isIPBlacklisted(clientIP)
-            };
-
-            if (fileInput && fileInput.files.length > 0) {
-                const files = Array.from(fileInput.files);
-                let processedFiles = 0;
-                
-                files.forEach((file, index) => {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        dossierEntry.files.push({
-                            name: file.name,
-                            type: file.type,
-                            size: file.size,
-                            data: e.target.result
-                        });
-                        processedFiles++;
-                        
-                        if (processedFiles === files.length) {
-                            saveDossierEntry(dossierEntry);
-                        }
-                    };
-                    reader.readAsDataURL(file);
-                });
-            } else {
-                saveDossierEntry(dossierEntry);
-            }
-            
-            const message = isIPBlacklisted(clientIP) 
-                ? 'Свидетельство отправлено на модерацию.' 
-                : 'Свидетельство отправлено! Спасибо за ваш вклад в разоблачение правды.';
-            showNotification(message, isIPBlacklisted(clientIP) ? 'warning' : 'success');
-            form.reset();
-            return true;
-        } else {
-            showNotification('Пожалуйста, заполните описание вашего опыта.', 'error');
-            return false;
-        }
-    }
-
-    // Enhanced form handling for dossier uploads
-    const uploadForms = document.querySelectorAll('.upload-form, .anonymous-upload');
-    uploadForms.forEach(form => {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            const formType = this.classList.contains('anonymous-upload') ? 'anonymous' : 'public';
-            await handleFormSubmission(this, formType);
-        });
-    });
-
-    // Enhanced file upload preview
-    const fileInputs = document.querySelectorAll('input[type="file"]');
-    fileInputs.forEach(input => {
-        input.addEventListener('change', function() {
-            const files = this.files;
-            if (files.length > 0) {
-                const fileNames = Array.from(files).map(file => file.name).join(', ');
-                const totalSize = Array.from(files).reduce((sum, file) => sum + file.size, 0);
-                const sizeMB = (totalSize / (1024 * 1024)).toFixed(2);
-                
-                showNotification(`Выбрано файлов: ${files.length} (${sizeMB} MB)`, 'info');
-                
-                // Show file preview
-                showFilePreview(files);
-            }
-        });
-    });
-
-    // Evidence tag interactions with dossier data
-    const evidenceTags = document.querySelectorAll('.evidence-tag');
-    evidenceTags.forEach(tag => {
-        tag.addEventListener('click', function() {
-            const tagText = this.textContent;
-            const dossierData = getDossierData();
-            const relatedEntries = dossierData.filter(entry => 
-                entry.content.toLowerCase().includes(tagText.toLowerCase()) ||
-                entry.title.toLowerCase().includes(tagText.toLowerCase())
-            );
-            
-            if (relatedEntries.length > 0) {
-                showDossierDetails(tagText, relatedEntries);
-            } else {
-                showNotification(`Досье: ${tagText} - подробная информация будет добавлена позже.`, 'info');
-            }
-        });
-    });
-
-    // Meme placeholders interactions
-    const memePlaceholders = document.querySelectorAll('.meme-placeholder');
-    memePlaceholders.forEach(placeholder => {
-        placeholder.addEventListener('click', function() {
-            const placeholderText = this.querySelector('p').textContent;
-            showNotification(`${placeholderText} - материалы будут добавлены по мере поступления.`, 'info');
-        });
-    });
-
-    // Header scroll effect
-    let lastScrollTop = 0;
-    const header = document.querySelector('.header');
-    
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > lastScrollTop && scrollTop > 100) {
-            // Scrolling down
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            // Scrolling up
-            header.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollTop = scrollTop;
-    });
-
-    // Add header transition
-    header.style.transition = 'transform 0.3s ease-in-out';
-
-    // Statistics counter animation
-    const statNumbers = document.querySelectorAll('.stat-number');
-    statNumbers.forEach(stat => {
-        const finalValue = stat.textContent;
-        if (finalValue !== '∞' && finalValue !== '100%') {
-            animateCounter(stat, 0, parseInt(finalValue), 2000);
-        }
-    });
-
-    // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        const rate = scrolled * -0.5;
-        hero.style.transform = `translateY(${rate}px)`;
-    });
-
-    // Add loading animation
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-    });
-
-    // View all dossiers button
-    const viewAllDossiersBtn = document.getElementById('view-all-dossiers');
-    if (viewAllDossiersBtn) {
-        viewAllDossiersBtn.addEventListener('click', function() {
-            const dossierData = getDossierData();
-            if (dossierData.length > 0) {
-                showAllDossiers(dossierData);
-            } else {
-                showNotification('Пока нет загруженных свидетельств.', 'info');
-            }
-        });
-    }
-
-    // Export dossiers button
-    const exportDossiersBtn = document.getElementById('export-dossiers');
-    if (exportDossiersBtn) {
-        exportDossiersBtn.addEventListener('click', function() {
-            const dossierData = getDossierData();
-            if (dossierData.length > 0) {
-                exportDossierData(dossierData);
-            } else {
-                showNotification('Нет данных для экспорта.', 'warning');
-            }
-        });
-    }
-});
-
-// Dossier storage functions
-function initializeDossierStorage() {
-    if (!localStorage.getItem('dossierData')) {
-        localStorage.setItem('dossierData', JSON.stringify([]));
-    }
-}
-
-function saveDossierEntry(entry) {
-    const dossierData = getDossierData();
-    dossierData.push(entry);
-    localStorage.setItem('dossierData', JSON.stringify(dossierData));
-    
-    // Update dossier statistics
-    updateDossierStats();
-}
-
-function getDossierData() {
-    return JSON.parse(localStorage.getItem('dossierData') || '[]');
-}
-
-function updateDossierStats() {
-    const dossierData = getDossierData();
-    const totalEntries = dossierData.length;
-    const anonymousEntries = dossierData.filter(entry => entry.type === 'anonymous').length;
-    const publicEntries = dossierData.filter(entry => entry.type === 'public').length;
-    
-    // Update stats in the hero section if they exist
-    const statsContainer = document.querySelector('.hero-stats');
-    if (statsContainer) {
-        const newStat = document.createElement('div');
-        newStat.className = 'stat';
-        newStat.innerHTML = `
-            <span class="stat-number">${totalEntries}</span>
-            <span class="stat-label">Свидетельств</span>
-        `;
-        
-        // Replace or add the new stat
-        const existingStat = statsContainer.querySelector('.stat:last-child');
-        if (existingStat) {
-            existingStat.replaceWith(newStat);
-        }
-    }
-}
-
-function showFilePreview(files) {
-    const previewContainer = document.createElement('div');
-    previewContainer.className = 'file-preview';
-    previewContainer.style.cssText = `
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        z-index: 10001;
-        max-width: 400px;
-        max-height: 300px;
-        overflow-y: auto;
-    `;
-    
-    const fileList = document.createElement('ul');
-    fileList.style.cssText = 'list-style: none; padding: 0; margin: 0;';
-    
-    Array.from(files).forEach(file => {
-        const listItem = document.createElement('li');
-        listItem.style.cssText = 'padding: 8px 0; border-bottom: 1px solid #eee;';
-        listItem.innerHTML = `
-            <strong>${file.name}</strong><br>
-            <small>${(file.size / 1024).toFixed(1)} KB</small>
-        `;
-        fileList.appendChild(listItem);
-    });
-    
-    previewContainer.innerHTML = `
-        <h4 style="margin-bottom: 15px;">Предварительный просмотр файлов</h4>
-        ${fileList.outerHTML}
-        <button onclick="this.parentElement.remove()" style="margin-top: 15px; padding: 8px 16px; background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer;">Закрыть</button>
-    `;
-    
-    document.body.appendChild(previewContainer);
-    
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (previewContainer.parentNode) {
-            previewContainer.remove();
-        }
-    }, 5000);
-}
-
-function showDossierDetails(tagText, entries) {
-    const modal = document.createElement('div');
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 10002;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    `;
-    
-    const modalContent = document.createElement('div');
-    modalContent.style.cssText = `
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        max-width: 600px;
-        max-height: 80vh;
-        overflow-y: auto;
-        position: relative;
-    `;
-    
-    let content = `<h3 style="color: #ff6b6b; margin-bottom: 20px;">Досье: ${tagText}</h3>`;
-    
-    entries.forEach((entry, index) => {
-        content += `
-            <div style="border: 1px solid #eee; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
-                <h4 style="margin-bottom: 10px;">${entry.title}</h4>
-                <p style="margin-bottom: 10px; color: #666;">${entry.content}</p>
-                <small style="color: #999;">${new Date(entry.timestamp).toLocaleDateString('ru-RU')}</small>
-                ${entry.files.length > 0 ? `<br><small style="color: #ff6b6b;">Файлов: ${entry.files.length}</small>` : ''}
-            </div>
-        `;
-    });
-    
-    modalContent.innerHTML = `
-        ${content}
-        <button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer; color: #999;">×</button>
-    `;
-    
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-    
-    // Close on outside click
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.remove();
-        }
-    });
-}
-
-function showAllDossiers(dossierData) {
-    const modal = document.createElement('div');
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 10002;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    `;
-    
-    const modalContent = document.createElement('div');
-    modalContent.style.cssText = `
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        max-width: 800px;
-        max-height: 80vh;
-        overflow-y: auto;
-        position: relative;
-    `;
-    
-    let content = `
-        <h3 style="color: #ff6b6b; margin-bottom: 20px;">
-            <i class="fas fa-archive"></i> Все свидетельства (${dossierData.length})
-        </h3>
-        <div style="margin-bottom: 20px;">
-            <button onclick="filterDossiers('all')" class="filter-btn active">Все</button>
-            <button onclick="filterDossiers('anonymous')" class="filter-btn">Анонимные</button>
-            <button onclick="filterDossiers('public')" class="filter-btn">Публичные</button>
-        </div>
-        <div id="dossiers-list">
-    `;
-    
-    dossierData.forEach((entry, index) => {
-        content += `
-            <div class="dossier-entry" data-type="${entry.type}" style="border: 1px solid #eee; padding: 15px; margin-bottom: 15px; border-radius: 8px;">
-                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 10px;">
-                    <h4 style="margin: 0;">${entry.title}</h4>
-                    <span style="background: ${entry.type === 'anonymous' ? '#ff6b6b' : '#28a745'}; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.8rem;">
-                        ${entry.type === 'anonymous' ? 'Анонимно' : 'Публично'}
-                    </span>
-                </div>
-                <p style="margin-bottom: 10px; color: #666;">${entry.content}</p>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <small style="color: #999;">${new Date(entry.timestamp).toLocaleDateString('ru-RU')}</small>
-                    ${entry.files.length > 0 ? `<small style="color: #ff6b6b;"><i class="fas fa-paperclip"></i> ${entry.files.length} файл(ов)</small>` : ''}
-                </div>
-                ${entry.files.length > 0 ? `
-                    <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #eee;">
-                        <strong>Файлы:</strong>
-                        <ul style="margin: 5px 0; padding-left: 20px;">
-                            ${entry.files.map(file => `<li>${file.name} (${(file.size / 1024).toFixed(1)} KB)</li>`).join('')}
-                        </ul>
-                    </div>
-                ` : ''}
-            </div>
-        `;
-    });
-    
-    content += `
-        </div>
-        <button onclick="this.parentElement.parentElement.remove()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 20px; cursor: pointer; color: #999;">×</button>
-    `;
-    
-    modalContent.innerHTML = content;
-    modal.appendChild(modalContent);
-    document.body.appendChild(modal);
-    
-    // Add filter functionality
-    window.filterDossiers = function(type) {
-        const entries = modal.querySelectorAll('.dossier-entry');
-        const filterBtns = modal.querySelectorAll('.filter-btn');
-        
-        filterBtns.forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
-        
-        entries.forEach(entry => {
-            if (type === 'all' || entry.dataset.type === type) {
-                entry.style.display = 'block';
-            } else {
-                entry.style.display = 'none';
-            }
-        });
-    };
-    
-    // Close on outside click
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            modal.remove();
-        }
-    });
-}
-
-function exportDossierData(dossierData) {
-    const exportData = {
-        exportDate: new Date().toISOString(),
-        totalEntries: dossierData.length,
-        entries: dossierData.map(entry => ({
-            title: entry.title,
-            content: entry.content,
-            type: entry.type,
-            timestamp: entry.timestamp,
-            filesCount: entry.files.length
-        }))
-    };
-    
-    const dataStr = JSON.stringify(exportData, null, 2);
-    const dataBlob = new Blob([dataStr], {type: 'application/json'});
-    
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(dataBlob);
-    link.download = `gromover-dossiers-${new Date().toISOString().split('T')[0]}.json`;
-    link.click();
-    
-    showNotification('Данные экспортированы успешно!', 'success');
-}
-
-// Notification system
-function showNotification(message, type = 'info') {
-    // Remove existing notifications
-    const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notification => notification.remove());
-
-    // Create notification element
-    const notification = document.createElement('div');
-    notification.className = `notification notification-${type}`;
-    notification.innerHTML = `
-        <div class="notification-content">
-            <i class="fas ${getNotificationIcon(type)}"></i>
-            <span>${message}</span>
-            <button class="notification-close">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    `;
-
-    // Add styles
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        background: ${getNotificationColor(type)};
-        color: white;
-        padding: 15px 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        z-index: 10000;
-        max-width: 400px;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-    `;
-
-    // Add to page
-    document.body.appendChild(notification);
-
-    // Animate in
-    setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-    }, 100);
-
-    // Close button functionality
-    const closeBtn = notification.querySelector('.notification-close');
-    closeBtn.addEventListener('click', () => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => notification.remove(), 300);
-    });
-
-    // Auto remove after 5 seconds
-    setTimeout(() => {
-        if (notification.parentNode) {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => notification.remove(), 300);
-        }
-    }, 5000);
-}
-
-function getNotificationIcon(type) {
-    const icons = {
-        success: 'fa-check-circle',
-        error: 'fa-exclamation-circle',
-        warning: 'fa-exclamation-triangle',
-        info: 'fa-info-circle'
-    };
-    return icons[type] || icons.info;
-}
-
-function getNotificationColor(type) {
-    const colors = {
-        success: '#28a745',
-        error: '#dc3545',
-        warning: '#ffc107',
-        info: '#17a2b8'
-    };
-    return colors[type] || colors.info;
-}
-
-// Counter animation
-function animateCounter(element, start, end, duration) {
-    const startTime = performance.now();
-    
-    function updateCounter(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        const current = Math.floor(start + (end - start) * progress);
-        element.textContent = current;
-        
-        if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-        }
-    }
-    
-    requestAnimationFrame(updateCounter);
-}
-
-// Add CSS for notifications
-const notificationStyles = document.createElement('style');
-notificationStyles.textContent = `
-    .notification-content {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-    
-    .notification-close {
-        background: none;
-        border: none;
-        color: white;
-        cursor: pointer;
-        margin-left: auto;
-        opacity: 0.7;
-        transition: opacity 0.3s ease;
-    }
-    
-    .notification-close:hover {
-        opacity: 1;
-    }
-    
-    .loaded {
-        opacity: 1;
-    }
-    
-    body {
-        opacity: 0;
-        transition: opacity 0.5s ease;
-    }
-`;
-document.head.appendChild(notificationStyles);
-
-// Add keyboard shortcuts
-document.addEventListener('keydown', function(e) {
-    // Ctrl/Cmd + K to focus search (if we add search functionality later)
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        // Future search functionality
-    }
-    
-    // Escape to close notifications
-    if (e.key === 'Escape') {
-        const notifications = document.querySelectorAll('.notification');
-        notifications.forEach(notification => {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => notification.remove(), 300);
-        });
-    }
-});
-
-// Add touch support for mobile
-if ('ontouchstart' in window) {
-    document.body.classList.add('touch-device');
-}
-
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply debouncing to scroll events
-const debouncedScrollHandler = debounce(function() {
-    // Scroll handling logic here if needed
-}, 16);
-
-// Interactive Elements for Modernized Platform
-
-// Evidence Gallery System (Hotspot system removed)
-document.addEventListener('DOMContentLoaded', function() {
-    initializeEvidenceGallery();
-    initializeInteractiveCycle();
-    initializeVideoIntegration();
-});
-
-// Evidence Gallery Functionality
-function initializeEvidenceGallery() {
-    // Filter functionality
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const evidenceItems = document.querySelectorAll('.evidence-item');
-    
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Update active filter button
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const filter = this.getAttribute('data-filter');
-            
-            // Filter evidence items
-            evidenceItems.forEach(item => {
-                if (filter === 'all') {
-                    item.style.display = 'block';
-                    item.style.opacity = '1';
-                } else {
-                    const category = item.getAttribute('data-category');
-                    const tags = item.querySelectorAll('.tag');
-                    let shouldShow = false;
-                    
-                    // Check category match
-                    if (category && category.includes(filter)) {
-                        shouldShow = true;
-                    }
-                    
-                    // Check tag match
-                    tags.forEach(tag => {
-                        if (tag.classList.contains(filter)) {
-                            shouldShow = true;
-                        }
-                    });
-                    
-                    if (shouldShow) {
-                        item.style.display = 'block';
-                        item.style.opacity = '1';
-                    } else {
-                        item.style.display = 'none';
-                        item.style.opacity = '0';
-                    }
+                if (entry.target.classList.contains('problem-card')) {
+                    showMilitaryNotification('ДОКУМЕНТ ОБНАРУЖЕН', 'info');
                 }
-            });
-            
-            // Add animation effect
-            setTimeout(() => {
-                evidenceItems.forEach(item => {
-                    if (item.style.display !== 'none') {
-                        item.style.transform = 'translateY(0)';
-                    }
-                });
-            }, 100);
-        });
-    });
-    
-    // View mode functionality
-    const viewButtons = document.querySelectorAll('.view-btn');
-    const evidenceGrid = document.querySelector('.evidence-grid');
-    
-    viewButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            viewButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            const view = this.getAttribute('data-view');
-            
-            switch(view) {
-                case 'grid':
-                    evidenceGrid.style.display = 'grid';
-                    evidenceGrid.style.gridTemplateColumns = 'repeat(auto-fit, minmax(300px, 1fr))';
-                    break;
-                case 'timeline':
-                    evidenceGrid.style.display = 'flex';
-                    evidenceGrid.style.flexDirection = 'column';
-                    evidenceGrid.style.gridTemplateColumns = 'none';
-                    break;
-                case 'fullscreen':
-                    openFullscreenGallery();
-                    break;
             }
         });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.problem-card, .section-title, .hero-title').forEach(el => {
+        observer.observe(el);
     });
 }
 
-// Hotspot System Removed - Simplified Evidence Display
-// Evidence items now display directly without interactive hotspots
-
-// Interactive Cycle Diagram Functionality
-function initializeInteractiveCycle() {
-    const cycleSteps = document.querySelectorAll('.interactive-cycle-step');
-    const evidencePanel = document.getElementById('evidence-connections');
-    
-    if (!evidencePanel) return;
-    
-    const evidenceData = {
-        'refusal': {
-            title: 'Отказ от Мирного Договора',
-            evidence: ['Screenshot_29.png', 'Screenshot_30.png'],
-            description: 'Документированные отказы от принятия правил и ограничений власти'
-        },
-        'censorship': {
-            title: 'Цензура вместо Аргументов',
-            evidence: ['Screenshot_31.png'],
-            description: 'Систематическое подавление через муты и блокировки'
-        },
-        'ai-obsession': {
-            title: 'Одержимость AI',
-            evidence: ['Screenshot_21.png', 'Screenshot_22.png', 'Screenshot_23.png'],
-            description: 'Постоянные обвинения в использовании ИИ как единственный аргумент'
-        },
-        'escalation': {
-            title: 'Физические Угрозы',
-            evidence: ['Screenshot_25.png'],
-            description: 'Переход к экстремальным мерам и прямым угрозам'
-        },
-        'cover-up': {
-            title: 'Сокрытие Доказательств',
-            evidence: ['Screenshot_26.png'],
-            description: 'Попытки удаления и сокрытия компрометирующих материалов'
-        }
-    };
-    
-    cycleSteps.forEach(step => {
-        step.addEventListener('mouseenter', function() {
-            const evidenceType = this.getAttribute('data-evidence');
-            const data = evidenceData[evidenceType];
-            
-            if (data) {
-                evidencePanel.innerHTML = `
-                    <h5 style="color: #4a90e2; margin-bottom: 10px;">${data.title}</h5>
-                    <p style="color: #cccccc; margin-bottom: 15px;">${data.description}</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        ${data.evidence.map(screenshot => 
-                            `<span style="background: rgba(74, 144, 226, 0.2); padding: 4px 8px; border-radius: 4px; color: #4a90e2; font-size: 0.8rem; cursor: pointer;" onclick="openScreenshotModal('${screenshot}')">${screenshot}</span>`
-                        ).join('')}
-                    </div>
-                `;
-            }
-            
-            // Highlight connections
-            this.classList.add('active');
+function addInteractiveElements() {
+    // Add hover effects to evidence tags
+    document.querySelectorAll('.evidence-tag').forEach(tag => {
+        tag.addEventListener('mouseenter', () => {
+            tag.style.boxShadow = '0 0 15px rgba(135, 206, 235, 0.5)';
         });
         
-        step.addEventListener('mouseleave', function() {
-            this.classList.remove('active');
-            evidencePanel.innerHTML = '<p>Наведите на элементы диаграммы для просмотра связей с доказательствами</p>';
+        tag.addEventListener('mouseleave', () => {
+            tag.style.boxShadow = 'none';
+        });
+    });
+
+    // Add click effects to threat quotes
+    document.querySelectorAll('.threat-quote').forEach(quote => {
+        quote.addEventListener('click', () => {
+            showMilitaryNotification('КРИТИЧЕСКОЕ СВИДЕТЕЛЬСТВО АКТИВИРОВАНО', 'critical');
+            playMilitarySound();
+        });
+    });
+
+    // Add form submission handling
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showMilitaryNotification('ДАННЫЕ ОТПРАВЛЕНЫ В ЦЕНТРАЛЬНЫЙ АРХИВ', 'info');
         });
     });
 }
 
-// Video Integration Functionality
-function initializeVideoIntegration() {
-    const videoPlaceholder = document.querySelector('.video-embed-placeholder');
-    
-    if (videoPlaceholder) {
-        videoPlaceholder.addEventListener('click', function() {
-            // Placeholder for YouTube video integration
-            showNotification('YouTube видео будет интегрировано в следующем обновлении', 'info');
+function addEvidenceSystem() {
+    // Add click listeners to evidence hotspots
+    document.querySelectorAll('.evidence-hotspot').forEach(hotspot => {
+        hotspot.addEventListener('click', () => {
+            const screenshot = hotspot.dataset.screenshot;
+            showEvidenceModal(screenshot);
         });
-    }
+    });
+
+    // Add dossier action buttons
+    document.querySelectorAll('#view-all-dossiers, #export-dossiers, #evidence-search').forEach(btn => {
+        btn.addEventListener('click', () => {
+            handleDossierAction(btn.id);
+        });
+    });
 }
 
-// Screenshot Modal Functionality
-function openScreenshotModal(screenshot) {
-    // Create modal
+function showEvidenceModal(screenshot) {
     const modal = document.createElement('div');
-    modal.className = 'screenshot-modal';
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2000;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    `;
-    
+    modal.className = 'evidence-modal';
     modal.innerHTML = `
-        <div style="position: relative; max-width: 90%; max-height: 90%; background: #1a1a2e; border-radius: 12px; padding: 20px; border: 2px solid #4a90e2;">
-            <button onclick="this.closest('.screenshot-modal').remove()" style="position: absolute; top: 10px; right: 10px; background: #d32f2f; border: none; color: white; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 18px;">×</button>
-            <h3 style="color: #4a90e2; margin-bottom: 15px;"> ${screenshot}</h3>
-            <div style="text-align: center; color: #cccccc; padding: 40px;">
-                <i class="fas fa-image" style="font-size: 3rem; margin-bottom: 15px; color: #4a90e2;"></i>
-                <p>Скриншот будет отображен здесь</p>
-                <p style="font-size: 0.9rem; opacity: 0.7;">Изображение: ${screenshot}</p>
-            </div>
+        <div class="evidence-content">
+            <div class="evidence-close" onclick="this.parentElement.parentElement.remove()">✕</div>
+            <h3 style="color: #87CEEB; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">ДОКАЗАТЕЛЬСТВО</h3>
+            <img src="${screenshot}" alt="Evidence" style="max-width: 100%; height: auto;">
         </div>
     `;
     
     document.body.appendChild(modal);
     
-    // Animate in
-    setTimeout(() => {
-        modal.style.opacity = '1';
-    }, 10);
+    // Show modal
+    setTimeout(() => modal.classList.add('show'), 100);
     
     // Close on background click
-    modal.addEventListener('click', function(e) {
+    modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.remove();
+            modal.classList.remove('show');
+            setTimeout(() => modal.remove(), 300);
         }
     });
 }
 
-// Fullscreen Gallery Functionality
-function openFullscreenGallery() {
-    showNotification('Полноэкранный режим галереи будет добавлен в следующем обновлении', 'info');
+function handleDossierAction(action) {
+    const actions = {
+        'view-all-dossiers': 'ПРОСМОТР ВСЕХ ДОСЬЕ ИНИЦИИРОВАН',
+        'export-dossiers': 'ЭКСПОРТ ДАННЫХ ВЫПОЛНЕН',
+        'evidence-search': 'ПОИСК ПО ДОКАЗАТЕЛЬСТВАМ АКТИВИРОВАН'
+    };
+    
+    showMilitaryNotification(actions[action] || 'ДЕЙСТВИЕ ВЫПОЛНЕНО', 'info');
 }
 
-// Evidence Search Functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const searchButton = document.getElementById('evidence-search');
-    if (searchButton) {
-        searchButton.addEventListener('click', function() {
-            const searchTerm = prompt('Введите поисковый запрос для поиска по доказательствам:');
-            if (searchTerm) {
-                searchEvidence(searchTerm);
-            }
-        });
-    }
-});
-
-function searchEvidence(term) {
-    const evidenceItems = document.querySelectorAll('.evidence-item');
-    const searchTerm = term.toLowerCase();
-    let foundCount = 0;
+function playMilitarySound() {
+    // Simulate military sound with visual flash
+    const flash = document.createElement('div');
+    flash.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 107, 107, 0.1);
+        z-index: 9998;
+        pointer-events: none;
+    `;
+    document.body.appendChild(flash);
     
-    evidenceItems.forEach(item => {
-        const title = item.querySelector('.evidence-title')?.textContent.toLowerCase() || '';
-        const description = item.querySelector('.evidence-description')?.textContent.toLowerCase() || '';
-        const tags = Array.from(item.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase()).join(' ');
+    setTimeout(() => flash.remove(), 200);
+}
+
+function addKeyboardShortcuts() {
+    document.addEventListener('keydown', (e) => {
+        // Ctrl+K for search
+        if (e.ctrlKey && e.key === 'k') {
+            e.preventDefault();
+            showMilitaryNotification('ПОИСК АКТИВИРОВАН', 'info');
+        }
         
-        if (title.includes(searchTerm) || description.includes(searchTerm) || tags.includes(searchTerm)) {
-            item.style.display = 'block';
-            item.style.border = '2px solid #ff6b6b';
-            item.style.boxShadow = '0 0 15px rgba(255, 107, 107, 0.5)';
-            foundCount++;
-        } else {
-            item.style.display = 'none';
+        // Ctrl+A for select all
+        if (e.ctrlKey && e.key === 'a') {
+            showMilitaryNotification('ВСЕ ЭЛЕМЕНТЫ ВЫБРАНЫ', 'info');
+        }
+        
+        // Escape to close modals
+        if (e.key === 'Escape') {
+            const modals = document.querySelectorAll('.evidence-modal.show');
+            modals.forEach(modal => {
+                modal.classList.remove('show');
+                setTimeout(() => modal.remove(), 300);
+            });
         }
     });
-    
-    showNotification(`Найдено доказательств: ${foundCount}`, foundCount > 0 ? 'success' : 'warning');
-    
-    // Reset search after 10 seconds
-    setTimeout(() => {
-        evidenceItems.forEach(item => {
-            item.style.display = 'block';
-            item.style.border = '';
-            item.style.boxShadow = '';
-        });
-    }, 10000);
 }
 
-window.addEventListener('scroll', debouncedScrollHandler);
+function addLoadingScreen() {
+    const loadingScreen = document.createElement('div');
+    loadingScreen.className = 'loading-screen';
+    loadingScreen.innerHTML = `
+        <div class="loading-text">ИНИЦИАЛИЗАЦИЯ СИСТЕМЫ</div>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    `;
+    
+    document.body.appendChild(loadingScreen);
+    
+    // Simulate loading progress
+    const progress = loadingScreen.querySelector('.loading-progress');
+    let width = 0;
+    
+    const interval = setInterval(() => {
+        width += Math.random() * 20;
+        if (width >= 100) {
+            width = 100;
+            clearInterval(interval);
+            
+            setTimeout(() => {
+                loadingScreen.style.opacity = '0';
+                setTimeout(() => {
+                    loadingScreen.remove();
+                    showMilitaryNotification('СИСТЕМА ГОТОВА К РАБОТЕ', 'info');
+                }, 500);
+            }, 500);
+        }
+        progress.style.width = width + '%';
+    }, 200);
+}
+
+// Add current date to the page
+function updateCurrentDate() {
+    const dateElement = document.getElementById('current-date');
+    if (dateElement) {
+        const now = new Date();
+        const options = { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        };
+        dateElement.textContent = now.toLocaleDateString('ru-RU', options);
+    }
+}
+
+// Initialize date on load
+document.addEventListener('DOMContentLoaded', updateCurrentDate);
